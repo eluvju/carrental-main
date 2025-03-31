@@ -135,11 +135,23 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Correo electrónico',
       'pt': 'E-mail',
     },
+    'email_mobile_hint': {
+      'en': 'Enter your email id/Mobile no.',
+      'ar': 'أدخل بريدك الإلكتروني / رقم الهاتف المحمول',
+      'es': 'Ingrese su correo electrónico / número de teléfono móvil',
+      'pt': 'Digite seu e-mail ou número de celular',
+    },
     'qiz98qc1': {
       'en': 'Password',
       'ar': 'كلمة المرور',
       'es': 'Contraseña',
       'pt': 'Senha',
+    },
+    'password_hint': {
+      'en': 'Enter your password',
+      'ar': 'أدخل كلمة المرور',
+      'es': 'Ingrese su contraseña',
+      'pt': 'Digite sua senha',
     },
     'jvavrjuj': {
       'en': 'Login',
@@ -147,11 +159,29 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Acceso',
       'pt': 'Entrar',
     },
-    'o07dn8b0': {
-      'en': 'Please enter email id',
-      'ar': 'الرجاء إدخال معرف البريد الإلكتروني',
-      'es': 'Por favor ingrese la identificación de correo electrónico',
-      'pt': 'Por favor, insira seu e-mail',
+    'or_text': {
+      'en': 'OR',
+      'ar': 'أو',
+      'es': 'O',
+      'pt': 'OU',
+    },
+    'login_with_google': {
+      'en': 'Login with Google',
+      'ar': 'تسجيل الدخول باستخدام جوجل',
+      'es': 'Iniciar sesión con Google',
+      'pt': 'Entrar com Google',
+    },
+    'login_with_otp': {
+      'en': 'Login with OTP',
+      'ar': 'تسجيل الدخول باستخدام OTP',
+      'es': 'Iniciar sesión con OTP',
+      'pt': 'Entrar com OTP',
+    },
+    'dont_have_account': {
+      'en': "Don't have an account?",
+      'ar': 'ليس لديك حساب؟',
+      'es': '¿No tienes una cuenta?',
+      'pt': 'Não tem uma conta?',
     },
     '5wmogy0o': {
       'en': 'Please enter valid email id',

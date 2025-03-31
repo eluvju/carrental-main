@@ -268,7 +268,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                     decoration: InputDecoration(
 
                                       // labelText: 'Email',
-                                      hintText: 'Enter your email id/Mobile no.',
+                                      hintText: FFLocalizations.of(context).getText(
+                                        'email_mobile_hint' /* Enter your email id/Mobile no. */,
+                                      ),
                                       // hintText: 'Phone number',
                                       hintStyle:
                                       GoogleFonts.raleway(
@@ -313,13 +315,14 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                   ),
                                 ),
                                 Text(
-                                  "Password",
+                                  FFLocalizations.of(context).getText(
+                                    'bl0od0hs' /* Password */,
+                                  ),
                                   style: GoogleFonts.raleway(
                                       fontSize: 14,
                                       color: Color(0xff1D1415),
                                       fontWeight: FontWeight.w400 // Ensure the text is visible over the gradient
                                   ),
-
                                 ),
                                 SizedBox(
                                   height: 5,
@@ -335,7 +338,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                     obscureText: !_model.passwordVisibility,
                                     decoration: InputDecoration(
                                       // labelText: 'Email',
-                                      hintText: 'Enter your password',
+                                      hintText: FFLocalizations.of(context).getText(
+                                        'password_hint' /* Enter your password */,
+                                      ),
                                       // hintText: 'Phone number',
                                       hintStyle:
                                       GoogleFonts.raleway(
@@ -584,7 +589,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       ),
                                     ),
                                     Text(
-                                      "OR",
+                                      FFLocalizations.of(context).getText(
+                                        'or_text' /* OR */,
+                                      ),
                                       style: FlutterTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -609,7 +616,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                 print('Button Pressed');
                                 handelGoogleSignInNew();
                               },
-                              text: "Login with google",
+                              text: FFLocalizations.of(context).getText(
+                                'login_with_google' /* Login with Google */,
+                              ),
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 46.0,
@@ -638,7 +647,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       ),
                                     ),
                                     Text(
-                                      "OR",
+                                      FFLocalizations.of(context).getText(
+                                        'or_text' /* OR */,
+                                      ),
                                       style: FlutterTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -663,7 +674,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                 print('Button Pressed');
                                Helper.moveToScreenwithPush(context, UserLoginUpdateWidget());
                               },
-                              text: "Login with otp",
+                              text: FFLocalizations.of(context).getText(
+                                'login_with_otp' /* Login with OTP */,
+                              ),
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 46.0,
@@ -719,7 +732,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 4.0),
                                 child: Text(
-                                  "Don't have an account?",
+                                  FFLocalizations.of(context).getText(
+                                    'dont_have_account' /* Don't have an account? */,
+                                  ),
                                   style: GoogleFonts.raleway(
                                       fontSize: 14,
                                       color: Color(0xff0A1310),
