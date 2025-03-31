@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>580106350256-aturrf53lfr3bbmpvmgtgf362h7j89rc.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.580106350256-aturrf53lfr3bbmpvmgtgf362h7j89rc</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>580106350256-a030lgutdtn5ouq4pir0l9gap9203q6h.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDXFMYGSC9aZy8nfV0gO9SRJyZCw4Nk3Yk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>580106350256</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.apptech.travelrental</string>
+	<key>PROJECT_ID</key>
+	<string>carrental-5a6c6</string>
+	<key>STORAGE_BUCKET</key>
+	<string>carrental-5a6c6.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:580106350256:ios:32b56503fa9d8cc7fbd575</string>
+</dict>
+</plist>

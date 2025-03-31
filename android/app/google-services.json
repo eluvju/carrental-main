@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "580106350256",
+    "project_id": "carrental-5a6c6",
+    "storage_bucket": "carrental-5a6c6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:580106350256:android:ead267a0796d1167fbd575",
+        "android_client_info": {
+          "package_name": "com.apptech.travelrental"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "580106350256-eqs3070qe2jpaohlq567nasr8pcv4fjn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apptech.travelrental",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "580106350256-et4dpkerkpm6d4bj6dtt6nddt6e9ig04.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.apptech.travelrental",
+            "certificate_hash": "23e684c62f88571578b06047d907d2149691f867"
+          }
+        },
+        {
+          "client_id": "580106350256-t0e3c7p2t26h5j94ddbhd3303itkkhr9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAG7jdJGeKMmM4ltvizsjiVFa5UFefQCX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "580106350256-t0e3c7p2t26h5j94ddbhd3303itkkhr9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "580106350256-aturrf53lfr3bbmpvmgtgf362h7j89rc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.apptech.travelrental"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:580106350256:android:0c6ca91724863451fbd575",
+        "android_client_info": {
+          "package_name": "com.travel.multivendor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "580106350256-a030lgutdtn5ouq4pir0l9gap9203q6h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.travel.multivendor",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "580106350256-t0e3c7p2t26h5j94ddbhd3303itkkhr9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAG7jdJGeKMmM4ltvizsjiVFa5UFefQCX4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "580106350256-t0e3c7p2t26h5j94ddbhd3303itkkhr9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "580106350256-aturrf53lfr3bbmpvmgtgf362h7j89rc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.apptech.travelrental"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

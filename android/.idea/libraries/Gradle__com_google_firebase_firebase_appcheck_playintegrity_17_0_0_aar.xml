@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.google.firebase:firebase-appcheck-playintegrity:17.0.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/5588a9f088cb180923064afa5592f021/transformed/jetified-firebase-appcheck-playintegrity-17.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5588a9f088cb180923064afa5592f021/transformed/jetified-firebase-appcheck-playintegrity-17.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5588a9f088cb180923064afa5592f021/transformed/jetified-firebase-appcheck-playintegrity-17.0.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-appcheck-playintegrity/17.0.0/ec46501353294558ea4042c660b82503673af0b1/firebase-appcheck-playintegrity-17.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
