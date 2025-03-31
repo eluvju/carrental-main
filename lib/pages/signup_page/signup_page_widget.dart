@@ -217,9 +217,11 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Email",
+                                  FFLocalizations.of(context).getText(
+                                    'email_label' /* Email */,
+                                  ),
                                   style: GoogleFonts.raleway(
-                                      fontSize: 12,
+                                      fontSize: 14,
                                       color: Color(0xff1D1415),
                                       fontWeight: FontWeight.w400
                                   ),
@@ -241,7 +243,9 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                                     autofillHints: [AutofillHints.email],
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      hintText: 'Enter your email id',
+                                      hintText: FFLocalizations.of(context).getText(
+                                        'enter_email_hint' /* Enter your email id */,
+                                      ),
                                       hintStyle: GoogleFonts.raleway(
                                           fontSize: 12,
                                           color: Color(0xff7C8BA0),
@@ -283,12 +287,17 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                                   ),
                                 ),
                                 Text(
-                                  "Full Name",
+                                  FFLocalizations.of(context).getText(
+                                    'full_name_label' /* Full Name */,
+                                  ),
                                   style: GoogleFonts.raleway(
                                       fontSize: 14,
                                       color: Color(0xff1D1415),
-                                      fontWeight: FontWeight.w400 // Ensure the text is visible over the gradient
-                                      ),
+                                      fontWeight: FontWeight.w400
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
@@ -304,7 +313,9 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                                     autofillHints: [AutofillHints.email],
                                     obscureText: false,
                                     decoration: InputDecoration(
-                                      hintText: 'Enter your full name',
+                                      hintText: FFLocalizations.of(context).getText(
+                                        'enter_full_name_hint' /* Enter your full name */,
+                                      ),
                                       hintStyle: GoogleFonts.raleway(
                                           fontSize: 14,
                                           color: Color(0xff7C8BA0),
@@ -344,12 +355,14 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                                   ),
                                 ),
                                 Text(
-                                  "Phone Number",
+                                  FFLocalizations.of(context).getText(
+                                    'phone_number_label' /* Phone Number */,
+                                  ),
                                   style: GoogleFonts.raleway(
                                       fontSize: 14,
                                       color: Color(0xff1D1415),
-                                      fontWeight: FontWeight.w400 // Ensure the text is visible over the gradient
-                                      ),
+                                      fontWeight: FontWeight.w400
+                                  ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
@@ -415,7 +428,9 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                                           focusNode: _model.phoneNumberFocusNode,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            hintText: 'Enter your phone number',
+                                            hintText: FFLocalizations.of(context).getText(
+                                              'enter_phone_number_hint' /* Enter your phone number */,
+                                            ),
                                             hintStyle: GoogleFonts.raleway(
                                               fontSize: 14,
                                               color: Color(0xff7C8BA0),
@@ -461,12 +476,14 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                                   ),
                                 ),
                                 Text(
-                                  "Password",
+                                  FFLocalizations.of(context).getText(
+                                    'password_label' /* Password */,
+                                  ),
                                   style: GoogleFonts.raleway(
                                       fontSize: 14,
                                       color: Color(0xff1D1415),
-                                      fontWeight: FontWeight.w400 // Ensure the text is visible over the gradient
-                                      ),
+                                      fontWeight: FontWeight.w400
+                                  ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
@@ -477,12 +494,14 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                                     obscureText: !_model.passwordVisibility,
                                     autofillHints: [AutofillHints.password],
                                     decoration: InputDecoration(
-                                      hintText: 'Enter your password',
+                                      hintText: FFLocalizations.of(context).getText(
+                                        'enter_password_hint' /* Enter your password */,
+                                      ),
                                       hintStyle: GoogleFonts.raleway(
                                           fontSize: 14,
                                           color: Color(0xff7C8BA0),
-                                          fontWeight: FontWeight.w400 // Ensure the text is visible over the gradient
-                                          ),
+                                          fontWeight: FontWeight.w400
+                                      ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0xFFF7C8BA0),
@@ -528,12 +547,14 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                                   ),
                                 ),
                                 Text(
-                                  "Confirm Password",
+                                  FFLocalizations.of(context).getText(
+                                    'confirm_password_label' /* Confirm Password */,
+                                  ),
                                   style: GoogleFonts.raleway(
                                       fontSize: 14,
                                       color: Color(0xff1D1415),
-                                      fontWeight: FontWeight.w400 // Ensure the text is visible over the gradient
-                                      ),
+                                      fontWeight: FontWeight.w400
+                                  ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
@@ -544,12 +565,14 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                                     obscureText: !_model.confirmPasswordVisibility,
                                     autofillHints: [AutofillHints.password],
                                     decoration: InputDecoration(
-                                      hintText: 'Enter your confirm password',
+                                      hintText: FFLocalizations.of(context).getText(
+                                        'enter_confirm_password_hint' /* Enter your confirm password */,
+                                      ),
                                       hintStyle: GoogleFonts.raleway(
                                           fontSize: 14,
                                           color: Color(0xff7C8BA0),
-                                          fontWeight: FontWeight.w400 // Ensure the text is visible over the gradient
-                                          ),
+                                          fontWeight: FontWeight.w400
+                                      ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
                                           color: Color(0xFFF7C8BA0),
@@ -702,7 +725,7 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                                             setState(() {});
                                           },
                                     text: FFLocalizations.of(context).getText(
-                                      'myn8lzuh' /* Create Account */,
+                                      'get_started_button' /* Get Started */,
                                     ),
                                     options: FFButtonOptions(
                                       width: double.infinity,

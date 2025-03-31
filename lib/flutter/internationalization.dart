@@ -183,6 +183,24 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': '¿No tienes una cuenta?',
       'pt': 'Não tem uma conta?',
     },
+    'enter_email_hint': {
+      'en': 'Enter your email id',
+      'ar': 'أدخل بريدك الإلكتروني',
+      'es': 'Ingrese su correo electrónico',
+      'pt': 'Digite seu e-mail',
+    },
+    'full_name_label': {
+      'en': 'Full Name',
+      'ar': 'الاسم الكامل',
+      'es': 'Nombre completo',
+      'pt': 'Nome completo',
+    },
+    'enter_full_name_hint': {
+      'en': 'Enter your full name',
+      'ar': 'أدخل اسمك الكامل',
+      'es': 'Ingrese su nombre completo',
+      'pt': 'Digite seu nome completo',
+    },
     '5wmogy0o': {
       'en': 'Please enter valid email id',
       'ar': 'الرجاء إدخال البريد الإلكتروني الصحيح',
@@ -2716,6 +2734,83 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
       'es': '',
       'pt': '',
+    },
+  },
+  // ... existing code ...
+  {
+    'email_label': {
+      'en': 'Email',
+      'ar': 'البريد الإلكتروني',
+      'es': 'Correo electrónico',
+      'pt': 'E-mail',
+    },
+    'enter_email_hint': {
+      'en': 'Enter your email id',
+      'ar': 'أدخل بريدك الإلكتروني',
+      'es': 'Ingrese su correo electrónico',
+      'pt': 'Digite seu e-mail',
+    },
+    'full_name_label': {
+      'en': 'Full Name',
+      'ar': 'الاسم الكامل',
+      'es': 'Nombre completo',
+      'pt': 'Nome completo',
+    },
+    'enter_full_name_hint': {
+      'en': 'Enter your full name',
+      'ar': 'أدخل اسمك الكامل',
+      'es': 'Ingrese su nombre completo',
+      'pt': 'Digite seu nome completo',
+    },
+  },
+  {
+    'phone_number_label': {
+      'en': 'Phone Number',
+      'ar': 'رقم الهاتف',
+      'es': 'Número de teléfono',
+      'pt': 'Número de Telefone',
+    },
+    'enter_phone_number_hint': {
+      'en': 'Enter your phone number',
+      'ar': 'أدخل رقم هاتفك',
+      'es': 'Ingrese su número de teléfono',
+      'pt': 'Digite seu número de telefone',
+    },
+    'password_label': {
+      'en': 'Password',
+      'ar': 'كلمة المرور',
+      'es': 'Contraseña',
+      'pt': 'Senha',
+    },
+    'enter_password_hint': {
+      'en': 'Enter your password',
+      'ar': 'أدخل كلمة المرور',
+      'es': 'Ingrese su contraseña',
+      'pt': 'Digite sua senha',
+    },
+    'confirm_password_label': {
+      'en': 'Confirm Password',
+      'ar': 'تأكيد كلمة المرور',
+      'es': 'Confirmar contraseña',
+      'pt': 'Confirmar senha',
+    },
+    'enter_confirm_password_hint': {
+      'en': 'Enter your confirm password',
+      'ar': 'أدخل تأكيد كلمة المرور',
+      'es': 'Ingrese su confirmación de contraseña',
+      'pt': 'Digite sua confirmação de senha',
+    },
+    'next_button': {
+      'en': 'Next',
+      'ar': 'التالي',
+      'es': 'Siguiente',
+      'pt': 'Próximo',
+    },
+    'get_started_button': {
+      'en': 'Get Started',
+      'ar': 'ابدأ الآن',
+      'es': 'Comenzar',
+      'pt': 'Começar',
     },
   },
 ].reduce((a, b) => a..addAll(b));
