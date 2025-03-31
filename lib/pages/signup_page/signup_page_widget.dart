@@ -147,7 +147,7 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                       ),
                       Text(
                         FFLocalizations.of(context).getText(
-                          '0p0b9pfj' /* create */,
+                          'create_title' /* create */,
                         ),
                         style: GoogleFonts.raleway(
                             fontSize: 22,
@@ -182,9 +182,7 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                         children: [
                           Text(
                             FFLocalizations.of(context).getText(
-                              '89k4l8jl' /* Create a new account and start
-                              car rental with ease */
-                              ,
+                              'create_account_title' /* Create a new account and start car rental with ease */,
                             ),
                             style: GoogleFonts.raleway(
                                 fontSize: 16,
@@ -388,8 +386,12 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                                                 topRight: Radius.circular(40.0),
                                               ),
                                               inputDecoration: InputDecoration(
-                                                labelText: 'Search',
-                                                hintText: 'Start typing to search',
+                                                labelText: FFLocalizations.of(context).getText(
+                                                  'search_label' /* Search */,
+                                                ),
+                                                hintText: FFLocalizations.of(context).getText(
+                                                  'search_hint' /* Start typing to search */,
+                                                ),
                                                 prefixIcon: const Icon(Icons.search),
                                                 border: OutlineInputBorder(
                                                   borderSide: BorderSide(
@@ -695,13 +697,19 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                                                   duration: Duration(milliseconds: 4000),
                                                   backgroundColor: FlutterTheme.of(context).secondary,
                                                   action: SnackBarAction(
-                                                    label: 'Okay',
+                                                    label: FFLocalizations.of(context).getText(
+                                                      'okay_button' /* Okay */,
+                                                    ),
                                                     onPressed: () async {
                                                       await showDialog(
                                                         context: context,
                                                         builder: (alertDialogContext) {
                                                           return AlertDialog(
-                                                            title: Text('Notice'),
+                                                            title: Text(
+                                                              FFLocalizations.of(context).getText(
+                                                                'notice_title' /* Notice */,
+                                                              ),
+                                                            ),
                                                             content: Text(BaseUrlGroup.registerCall
                                                                 .message(
                                                                   (_model.signupResponse?.jsonBody ?? ''),
@@ -762,7 +770,7 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 4.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      'k5tkrarf' /* Already have an account?  */,
+                                      'already_have_account' /* Already have an account?  */,
                                     ),
                                     style: GoogleFonts.raleway(
                                         fontSize: 14,
@@ -775,7 +783,7 @@ class _SignupPageWidgetState extends State<SignupPageWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(4.0, 0.0, 0.0, 4.0),
                                   child: Text(
                                     FFLocalizations.of(context).getText(
-                                      'e2zk3fd9' /* Sign In */,
+                                      'sign_in_button' /* Sign In */,
                                     ),
                                     style: GoogleFonts.raleway(
                                         fontSize: 14,

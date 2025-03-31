@@ -2813,4 +2813,54 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Começar',
     },
   },
+  {
+    'search_label': {
+      'en': 'Search',
+      'ar': 'بحث',
+      'es': 'Buscar',
+      'pt': 'Pesquisar',
+    },
+    'search_hint': {
+      'en': 'Start typing to search',
+      'ar': 'ابدأ الكتابة للبحث',
+      'es': 'Empiece a escribir para buscar',
+      'pt': 'Comece a digitar para pesquisar',
+    },
+    'okay_button': {
+      'en': 'Okay',
+      'ar': 'موافق',
+      'es': 'Aceptar',
+      'pt': 'Ok',
+    },
+    'notice_title': {
+      'en': 'Notice',
+      'ar': 'تنبيه',
+      'es': 'Aviso',
+      'pt': 'Aviso',
+    },
+    'already_have_account': {
+      'en': 'Already have an account?',
+      'ar': 'لديك حساب بالفعل؟',
+      'es': '¿Ya tienes una cuenta?',
+      'pt': 'Já tem uma conta?',
+    },
+    'sign_in_button': {
+      'en': 'Sign In',
+      'ar': 'تسجيل الدخول',
+      'es': 'Iniciar sesión',
+      'pt': 'Entrar',
+    },
+    'create_account_title': {
+      'en': 'Create a new account and start car rental with ease',
+      'ar': 'أنشئ حسابًا جديدًا وابدأ استئجار السيارات بسهولة',
+      'es': 'Crea una nueva cuenta y comienza a alquilar coches fácilmente',
+      'pt': 'Crie uma nova conta e comece a alugar carros com facilidade',
+    },
+    'create_title': {
+      'en': 'Create Account',
+      'ar': 'إنشاء حساب',
+      'es': 'Crear cuenta',
+      'pt': 'Criar conta',
+    },
+  },
 ].reduce((a, b) => a..addAll(b));
