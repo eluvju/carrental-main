@@ -773,7 +773,7 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                     ),
                                   ),
                                   Text(
-                                    "/${_carDetailsModel!.data!.priceType!.toString()}",
+                                    "/${FFLocalizations.of(context).getText('price_type_' + _carDetailsModel!.data!.priceType!.toLowerCase())}",
                                     style: FlutterTheme.of(context).titleSmall.override(
                                       fontFamily: 'Urbanist',
                                       fontSize: 12,

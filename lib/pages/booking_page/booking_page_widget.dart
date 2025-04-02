@@ -65,6 +65,11 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
   bool _isConfirmBookingLoading = false;
   String _selectedOption = 'Self';
   PromocodeApplied?_promocodeApplyModel;
+
+  bool isDayPriceType(String? priceType) {
+    return priceType?.toLowerCase() == 'day';
+  }
+
   @override
   void initState() {
     super.initState();
@@ -76,7 +81,7 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
-        _model.daysAndHour = widget.priceType == FFLocalizations.of(context).getText('price_type_day') ? true : false;
+        _model.daysAndHour = isDayPriceType(widget.priceType);
       });
       setState(() {
         _model.driverAmount = _model.radioButtonValue == 'Self' ? 0 : 50;

@@ -1201,28 +1201,28 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Por favor, insira o número de contato',
     },
     '6b8vp6f5': {
-      'en': 'Start date',
-      'ar': 'تاريخ البدء',
-      'es': 'Fecha de inicio',
-      'pt': 'Data de início',
+      'en': 'Start Date',
+      'pt': 'Data Inicial',
+      'es': 'Fecha Inicial',
+      'ar': 'تاريخ البدء'
     },
     'p878gseq': {
-      'en': 'Start time',
-      'ar': 'تاريخ البدء',
-      'es': 'Fecha de inicio',
-      'pt': 'Horário de início',
+      'en': 'Start Time',
+      'pt': 'Hora Inicial',
+      'es': 'Hora Inicial',
+      'ar': 'وقت البدء'
     },
     '1ui0h2nb': {
-      'en': 'End date',
-      'ar': 'تاريخ الانتهاء',
-      'es': 'Fecha final',
-      'pt': 'Data de término',
+      'en': 'End Date',
+      'pt': 'Data Final',
+      'es': 'Fecha Final',
+      'ar': 'تاريخ الانتهاء'
     },
     '062bdg35': {
-      'en': 'End time',
-      'ar': 'تاريخ الانتهاء',
-      'es': 'Fecha final',
-      'pt': 'Horário de término',
+      'en': 'End Time',
+      'pt': 'Hora Final',
+      'es': 'Hora Final',
+      'ar': 'وقت الانتهاء'
     },
     'uwxzfxa2': {
       'en': 'License photo back and fornt',
@@ -2934,11 +2934,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Día',
       'ar': 'يوم'
     },
-    'price_type_hour': {
+    'price_type_hourly': {
       'en': 'Hourly',
       'ar': 'بالساعة',
-      'es': 'Por hora',
-      'pt': 'Por hora',
+      'es': 'Por Hora',
+      'pt': 'Por Hora',
     },
     'price_type_week': {
       'en': 'Week',
@@ -3437,6 +3437,46 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'pt': 'Confirmar Reserva',
       'es': 'Confirmar Reserva',
       'ar': 'تأكيد الحجز'
+    },
+  },
+  {
+    'start_date': {
+      'en': 'Start Date',
+      'pt': 'Data Inicial',
+      'es': 'Fecha Inicial',
+      'ar': 'تاريخ البدء'
+    },
+    'end_date': {
+      'en': 'End Date',
+      'pt': 'Data Final',
+      'es': 'Fecha Final',
+      'ar': 'تاريخ الانتهاء'
+    },
+    'start_time': {
+      'en': 'Start Time',
+      'pt': 'Hora Inicial',
+      'es': 'Hora Inicial',
+      'ar': 'وقت البدء'
+    },
+    'end_time': {
+      'en': 'End Time',
+      'pt': 'Hora Final',
+      'es': 'Hora Final',
+      'ar': 'وقت الانتهاء'
+    },
+  },
+  {
+    'days_and_hourly': {
+      'en': 'Days And Hourly',
+      'ar': 'الأيام والساعات',
+      'es': 'Días y Por Hora',
+      'pt': 'Dias e Por Hora',
+    },
+    'please_select_days_and_hourly': {
+      'en': 'Please select days and hourly',
+      'ar': 'الرجاء تحديد الأيام والساعات',
+      'es': 'Por favor seleccione días y horas',
+      'pt': 'Por favor selecione dias e horas',
     },
   },
 ].reduce((a, b) => a..addAll(b));
