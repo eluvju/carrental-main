@@ -117,14 +117,15 @@ class _SeeAllCarsState extends State<SeeAllCars> {
               child: Image.asset('assets/images/back_icon_with_bg.png',height: 30,width: 30,),
             ),
           ),
-          title: Text("All Cars",
-            // FFLocalizations.of(context).getText(
-            //   'p6r3ar1p' /* More Filter */,
-            // ),
-            style: FlutterTheme.of(context).headlineMedium.override(
-                fontFamily: 'Urbanist',
-                color: FlutterTheme.of(context).primaryText,
-                fontSize: 18.0,fontWeight: FontWeight.w600
+          title: Text(
+            FFLocalizations.of(context).getText(
+              'all_cars' /* All Cars */,
+            ),
+            style: FlutterTheme.of(context).bodyMedium.override(
+              fontFamily: 'Urbanist',
+              fontSize: 16.0,
+              fontWeight: FontWeight.w400,
+              color: Color(0XFF000000)
             ),
           ),
           actions: [],
@@ -139,7 +140,7 @@ class _SeeAllCarsState extends State<SeeAllCars> {
                 padding: EdgeInsets.all(0.0),
                 child:
 
-                widget.isSelected == "All Cars"
+                widget.isSelected == FFLocalizations.of(context).getText('all_cars')
                     ? (_allCarsModel == null||_allCarsModel!.data!.isEmpty
                     ? (_hasData
                     ? Container(

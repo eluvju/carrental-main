@@ -127,14 +127,15 @@ class _MoreFilterPageWidgetState extends State<MoreFilterPageWidget> {
               child: Image.asset('assets/images/back_icon_with_bg.png',height: 30,width: 30,),
             ),
           ),
-          title: Text("Filter Your Car",
-            // FFLocalizations.of(context).getText(
-            //   'p6r3ar1p' /* More Filter */,
-            // ),
+          title: Text(
+            FFLocalizations.of(context).getText(
+              'filter_button' /* Filter */,
+            ),
             style: FlutterTheme.of(context).headlineMedium.override(
-                fontFamily: 'Urbanist',
-                color: FlutterTheme.of(context).primaryText,
-                fontSize: 18.0,fontWeight: FontWeight.w600
+              fontFamily: 'Urbanist',
+              color: FlutterTheme.of(context).primaryText,
+              fontSize: 18.0,
+              fontWeight: FontWeight.w600
             ),
           ),
           actions: [],

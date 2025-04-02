@@ -2351,35 +2351,32 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                                       });
 
                                     },
-                                    child:_promocodeApplyModel==null?Text("Apply",style:FlutterTheme.of(context).titleSmall.override(
-                                      fontFamily: FlutterTheme.of(context).titleSmallFamily,
-                                      color: FlutterTheme.of(context).primary,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(FlutterTheme.of(context).titleSmallFamily),
-                                    ),):Text("Applied",
-                                      style: FlutterTheme.of(
-                                          context)
+                                    child:_promocodeApplyModel==null?Text(
+                                      FFLocalizations.of(context).getText(
+                                        'apply_button' /* Apply */,
+                                      ),
+                                      style:FlutterTheme.of(context).titleSmall.override(
+                                        fontFamily: FlutterTheme.of(context).titleSmallFamily,
+                                        color: FlutterTheme.of(context).primary,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400,
+                                        useGoogleFonts: GoogleFonts.asMap()
+                                            .containsKey(FlutterTheme.of(context).titleSmallFamily),
+                                      ),
+                                    ):Text(
+                                      FFLocalizations.of(context).getText(
+                                        'applied_status' /* Applied */,
+                                      ),
+                                      style: FlutterTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                        fontFamily:
-                                        FlutterTheme.of(
-                                            context)
-                                            .bodyMediumFamily,
-                                        color: FlutterTheme
-                                            .of(context)
-                                            .primary,
-                                        fontSize: 16.0,
-                                        fontWeight:
-                                        FontWeight.w400,
-                                        useGoogleFonts: GoogleFonts
-                                            .asMap()
-                                            .containsKey(
-                                            FlutterTheme.of(
-                                                context)
-                                                .bodyMediumFamily),
-                                      ),
+                                            fontFamily: FlutterTheme.of(context).bodyMediumFamily,
+                                            color: FlutterTheme.of(context).primary,
+                                            fontSize: 16.0,
+                                            fontWeight: FontWeight.w400,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey(FlutterTheme.of(context).bodyMediumFamily),
+                                          ),
                                     )),
                               ],
                             ):SizedBox(),
@@ -2931,14 +2928,16 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            "Coupon Amount",
+                                            FFLocalizations.of(context).getText(
+                                              'coupon_amount' /* Coupon Amount */,
+                                            ),
                                             style: FlutterTheme.of(context)
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Urbanist',
-                                              color: Color(0xff25212E),
-                                              fontSize: 16.0,
-                                              fontWeight: FontWeight.w400,
+                                                  color: Color(0xff25212E),
+                                                  fontSize: 16.0,
+                                                  fontWeight: FontWeight.w400,
                                                 ),
                                           ),
                                           _promocodeApplyModel==null?Text(

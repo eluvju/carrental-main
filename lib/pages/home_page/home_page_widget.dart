@@ -10,6 +10,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '/flutter/flutter_theme.dart';
 import '/flutter/flutter_util.dart';
@@ -47,8 +48,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     'coupe',
     'van',
   ];
-  String selectedCategory = "All Cars";
-  String isSelected = "All Cars";
+  late String selectedCategory;
+  late String isSelected;
   AddFavourite? _addFavourite;
   Promocode? _promocode;
   Map<String, String> eachCategoryWithImages = {
@@ -78,6 +79,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
+    selectedCategory = FFLocalizations.of(context).getText('all_cars');
+    isSelected = FFLocalizations.of(context).getText('all_cars');
     // getCurrentLocation();
     print(
         "SessionHelper().get(SessionHelper.LATITUDE).toString()${SessionHelper().get(SessionHelper.LATITUDE).toString()}");
@@ -155,9 +158,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void _onCategorySelected(String categoryName) {
     setState(() {
       isSelected = categoryName;
-      if (categoryName == "All Cars") {
+      if (categoryName == FFLocalizations.of(context).getText('all_cars')) {
         Helper.checkInternet(allcars());
       } else {
+        _catergorywiseCar = null;
         Helper.checkInternet(categorywiselist(categoryName));
       }
     });
@@ -238,12 +242,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   ),
             title: _userProfileModel != null
                 ? Text(
-                    "Hey,${_userProfileModel!.profileData!.userName.toString()}",
+                    FFLocalizations.of(context).getText(
+                      'hey_name' /* Hey, */,
+                    ) + _userProfileModel!.profileData!.userName.toString(),
                     style: FlutterTheme.of(context).bodyMedium.override(
                         fontFamily: 'Urbanist', fontSize: 16.0, fontWeight: FontWeight.w400, color: Color(0XFF000000)),
                   )
                 : Text(
-                    "Hey,User",
+                    FFLocalizations.of(context).getText(
+                      'hey_user' /* Hey,User */,
+                    ),
                     style: FlutterTheme.of(context).bodyMedium.override(
                         fontFamily: 'Urbanist', fontSize: 16.0, fontWeight: FontWeight.w400, color: Color(0XFF000000)),
                   ),
@@ -284,7 +292,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     width: 5,
                                   ),
                                   Text(
-                                    "Filter",
+                                    FFLocalizations.of(context).getText(
+                                      'filter_button' /* Filter */,
+                                    ),
                                     style: FlutterTheme.of(context).titleSmall.override(
                                           fontFamily: 'Urbanist',
                                           color: Color(0xff0D0C0F),
@@ -506,7 +516,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 Container(
                                                   width: 60,
                                                   child: Text(
-                                                    _allCategoryModel!.data![item].categoryName.toString(),
+                                                    _allCategoryModel!.data![item].categoryName.toString() == FFLocalizations.of(context).getText('all_cars')
+                                                        ? FFLocalizations.of(context).getText('all_cars')
+                                                        : _allCategoryModel!.data![item].categoryName.toString(),
                                                     overflow: TextOverflow.ellipsis,
                                                     style: FlutterTheme.of(context).bodyMedium.override(
                                                           fontFamily: 'Urbanist',
@@ -528,23 +540,26 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 SizedBox(
                                   height: 20,
                                 ),
-                                // Text(
-                                //   _catergorywiseCar!.data!.length==null||_catergorywiseCar!.data!.length==0?"Available Cars in ${isSelected}":
-                                //   "${_catergorywiseCar!.data!.length} Available Cars in ${isSelected}",
-                                //   style: FlutterTheme.of(context)
-                                //       .bodyMedium
-                                //       .override(
-                                //       fontFamily: 'Urbanist',
-                                //       fontSize: 16.0,
-                                //       fontWeight: FontWeight.w400,color: Color(0XFF000000)
-                                //   ),
-                                // ),
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    'available_cars_in' /* Available Cars in */,
+                                  ) + " " + isSelected,
+                                  style: FlutterTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                          fontFamily: 'Urbanist',
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.w400,
+                                          color: Color(0XFF000000)
+                                      ),
+                                ),
+
                                 SizedBox(
                                   height: 20,
                                 ),
                                 // isSelected=="All Cars"?Text("gdhgfhjvfr hiiiii"):Text("hellloooooo======="),
 
-                                isSelected == "All Cars"
+                                isSelected == FFLocalizations.of(context).getText('all_cars')
                                     ? (_allCarsModel == null || _allCarsModel!.data!.isEmpty
                                         ? SizedBox()
                                         : Column(
@@ -553,7 +568,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
                                                   Text(
-                                                    "Available Cars " + _allCarsModel!.data!.length.toString(),
+                                                    FFLocalizations.of(context).getText(
+                                                      'available_cars' /* Available Cars */,
+                                                    ) + " " + _allCarsModel!.data!.length.toString(),
                                                     style: FlutterTheme.of(context).bodyMedium.override(
                                                         fontFamily: 'Urbanist',
                                                         fontSize: 16.0,
@@ -574,10 +591,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       child: Row(
                                                         children: [
                                                           Text(
-                                                            "See All",
-                                                            // FFLocalizations.of(context).getText(
-                                                            //   'See All' /*See All*/,
-                                                            // ),
+                                                            FFLocalizations.of(context).getText(
+                                                              'see_all_button' /* See All */,
+                                                            ),
                                                             style: FlutterTheme.of(context).bodyMedium.override(
                                                                   fontFamily: 'Urbanist',
                                                                   fontSize: 17.0,
@@ -609,7 +625,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
                                                   Text(
-                                                    "Available Cars " + _catergorywiseCar!.data!.length.toString(),
+                                                    FFLocalizations.of(context).getText(
+                                                      'available_cars' /* Available Cars */,
+                                                    ) + " " + _catergorywiseCar!.data!.length.toString(),
                                                     style: FlutterTheme.of(context).bodyMedium.override(
                                                         fontFamily: 'Urbanist',
                                                         fontSize: 16.0,
@@ -630,10 +648,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                       child: Row(
                                                         children: [
                                                           Text(
-                                                            "See All",
-                                                            // FFLocalizations.of(context).getText(
-                                                            //   'See All' /*See All*/,
-                                                            // ),
+                                                            FFLocalizations.of(context).getText(
+                                                              'see_all_button' /* See All */,
+                                                            ),
                                                             style: FlutterTheme.of(context).bodyMedium.override(
                                                                   fontFamily: 'Urbanist',
                                                                   fontSize: 17.0,
@@ -658,7 +675,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             ],
                                           )),
 
-                                isSelected == "All Cars"
+                                isSelected == FFLocalizations.of(context).getText('all_cars')
                                     ? (_allCarsModel == null || _allCarsModel!.data!.isEmpty
                                         ? (_hasData
                                             ? Container(
@@ -667,7 +684,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             : Container(
                                                 height: 270,
                                                 child: Center(
-                                                  child: Text("No Car Available in this Category"),
+                                                  child: Text(
+                                                    FFLocalizations.of(context).getText(
+                                                      'no_cars_available' /* No Car Available in this Category */,
+                                                    ),
+                                                  ),
                                                 ),
                                               ))
                                         : Container(
@@ -800,13 +821,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           horizontal: 2.0, vertical: 0),
                                                                       child: Center(
                                                                         child: Text(
-                                                                          "Available now",
-                                                                          style: FlutterTheme.of(context)
-                                                                              .titleSmall
-                                                                              .override(
-                                                                                  fontFamily: 'Urbanist',
-                                                                                  color: Color(0xff4ADB06),
-                                                                                  fontSize: 12),
+                                                                          FFLocalizations.of(context).getText(
+                                                                            'available_now' /* Available now */,
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     ),
@@ -820,7 +837,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     size: 12,
                                                                   ),
                                                                   Text(
-                                                                    " ${distance.toStringAsFixed(2)} km",
+                                                                    " ${distance.toStringAsFixed(2)} " + FFLocalizations.of(context).getText(
+                                                                      'kilometer' /* km */,
+                                                                    ),
                                                                     style: FlutterTheme.of(context).titleSmall.override(
                                                                         fontFamily: 'Urbanist',
                                                                         color: Color(0xff0D0C0F),
@@ -930,7 +949,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                               Row(
                                                                 children: [
                                                                   Text(
-                                                                    "\$${_allCarsModel!.data![item].carCost.toString()}" +
+                                                                    formatPrice(context, _allCarsModel!.data![item].carCost.toString()) +
                                                                         "/",
                                                                     style: FlutterTheme.of(context).titleSmall.override(
                                                                         fontFamily: 'Urbanist',
@@ -938,7 +957,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         fontSize: 16),
                                                                   ),
                                                                   Text(
-                                                                    _allCarsModel!.data![item].priceType.toString(),
+                                                                    FFLocalizations.of(context).getText(
+                                                                      getPriceTypeTranslationKey(_allCarsModel!.data![item].priceType.toString())
+                                                                    ),
                                                                     style: FlutterTheme.of(context).titleSmall.override(
                                                                           fontFamily: 'Urbanist',
                                                                           fontSize: 12,
@@ -1013,7 +1034,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     width: 8.8,
                                                                   ),
                                                                   Text(
-                                                                    "${_allCarsModel!.data![item].carSeat.toString()} Seater",
+                                                                    "${_allCarsModel!.data![item].carSeat.toString()} " + FFLocalizations.of(context).getText(
+                                                                      'seater' /* Seater */,
+                                                                    ),
                                                                     style: FlutterTheme.of(context).titleSmall.override(
                                                                           fontFamily: 'Urbanist',
                                                                           fontSize: 14,
@@ -1041,7 +1064,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                             : Container(
                                                 height: 270,
                                                 child: Center(
-                                                  child: Text("No Car Available in this Category"),
+                                                  child: Text(
+                                                    FFLocalizations.of(context).getText(
+                                                      'no_cars_available' /* No Car Available in this Category */,
+                                                    ),
+                                                  ),
                                                 ),
                                               ))
                                         : Container(
@@ -1161,13 +1188,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                           horizontal: 2.0, vertical: 0),
                                                                       child: Center(
                                                                         child: Text(
-                                                                          "Available now",
-                                                                          style: FlutterTheme.of(context)
-                                                                              .titleSmall
-                                                                              .override(
-                                                                                  fontFamily: 'Urbanist',
-                                                                                  color: Color(0xff4ADB06),
-                                                                                  fontSize: 12),
+                                                                          FFLocalizations.of(context).getText(
+                                                                            'available_now' /* Available now */,
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     ),
@@ -1181,7 +1204,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     size: 12,
                                                                   ),
                                                                   Text(
-                                                                    " ${distance.toStringAsFixed(2)} km",
+                                                                    " ${distance.toStringAsFixed(2)} " + FFLocalizations.of(context).getText(
+                                                                      'kilometer' /* km */,
+                                                                    ),
                                                                     style: FlutterTheme.of(context).titleSmall.override(
                                                                         fontFamily: 'Urbanist',
                                                                         color: Color(0xff0D0C0F),
@@ -1294,7 +1319,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                               Row(
                                                                 children: [
                                                                   Text(
-                                                                    "\$${_catergorywiseCar!.data![item].carCost.toString()}" +
+                                                                    formatPrice(context, _catergorywiseCar!.data![item].carCost.toString()) +
                                                                         "/",
                                                                     style: FlutterTheme.of(context).titleSmall.override(
                                                                         fontFamily: 'Urbanist',
@@ -1302,7 +1327,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         fontSize: 16),
                                                                   ),
                                                                   Text(
-                                                                    _catergorywiseCar!.data![item].priceType.toString(),
+                                                                    FFLocalizations.of(context).getText(
+                                                                      getPriceTypeTranslationKey(_catergorywiseCar!.data![item].priceType.toString())
+                                                                    ),
                                                                     style: FlutterTheme.of(context).titleSmall.override(
                                                                           fontFamily: 'Urbanist',
                                                                           fontSize: 12,
@@ -1378,7 +1405,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                     width: 8.8,
                                                                   ),
                                                                   Text(
-                                                                    "${_catergorywiseCar!.data![item].carSeat.toString()} Seater",
+                                                                    "${_catergorywiseCar!.data![item].carSeat.toString()} " + FFLocalizations.of(context).getText(
+                                                                      'seater' /* Seater */,
+                                                                    ),
                                                                     style: FlutterTheme.of(context).titleSmall.override(
                                                                           fontFamily: 'Urbanist',
                                                                           fontSize: 14,
@@ -1406,12 +1435,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Promo Codes",
+                                      FFLocalizations.of(context).getText(
+                                        'redeem_code' /* Redeem Code */,
+                                      ),
                                       style: FlutterTheme.of(context).bodyMedium.override(
                                           fontFamily: 'Urbanist',
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.w400,
-                                          color: Color(0XFF0D0C0F)),
+                                          fontSize: 14.0,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.black,
+                                        ),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(right: 5.0),
@@ -1422,7 +1454,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         child: Row(
                                           children: [
                                             Text(
-                                              "See All",
+                                              FFLocalizations.of(context).getText(
+                                                'see_all_button' /* See All */,
+                                              ),
                                               style: FlutterTheme.of(context).bodyMedium.override(
                                                     fontFamily: 'Urbanist',
                                                     fontSize: 17.0,
@@ -1449,7 +1483,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         ? Container()
                                         : Container(
                                             child: Center(
-                                              child: Text("NO DATA"),
+                                              child: Text(
+                                                FFLocalizations.of(context).getText(
+                                                  'no_data' /* NO DATA */,
+                                                ),
+                                              ),
                                             ),
                                           )
                                     : Container(
@@ -1527,7 +1565,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                                 children: [
                                                                   Text(
-                                                                    "Redeem Code",
+                                                                    FFLocalizations.of(context).getText(
+                                                                      'redeem_code' /* Redeem Code */,
+                                                                    ),
                                                                     style: FlutterTheme.of(context).bodyMedium.override(
                                                                         fontFamily: 'Urbanist',
                                                                         fontSize: 12.0,
@@ -1535,7 +1575,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                         color: Color(0XFF553FA5)),
                                                                   ),
                                                                   Text(
-                                                                    "Expire: ${_promocode!.deliverydata![index].couponVaildT.toString()}",
+                                                                    FFLocalizations.of(context).getText(
+                                                                      'expired_status' /* Expired */,
+                                                                    ) + ": ${_promocode!.deliverydata![index].couponVaildT.toString()}",
                                                                     style: FlutterTheme.of(context).bodyMedium.override(
                                                                         fontFamily: 'Urbanist',
                                                                         fontSize: 12.0,
@@ -1619,12 +1661,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
             // context.pushNamed('RegisterCrozerVehicalPage');
 
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(model.message.toString()),
-              ),
-            );
-            // ToastMessage.msg(model.message.toString());
+            //  ToastMessage.msg(model.message.toString());
           }
         } catch (e) {
           print("false ============>");
@@ -1685,7 +1722,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               // Add a new category at the zero index
               _allCategoryModel!.addCategoryAtZeroIndex(
                 "newCatId",
-                "All Cars",
+                FFLocalizations.of(context).getText('all_cars'),
                 "https://brainesscompany.com.br/api_assets/images/ALL_CARS.png",
               );
 
@@ -2147,5 +2184,37 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     int minutes = ((time - hours) * 60).round();
 
     return "${hours}h ${minutes}m";
+  }
+
+  String getPriceTypeTranslationKey(String priceType) {
+    switch (priceType.toLowerCase()) {
+      case 'day':
+        return 'price_type_day';
+      case 'hourly':
+        return 'price_type_hour';
+      case 'week':
+        return 'price_type_week';
+      case 'month':
+        return 'price_type_month';
+      default:
+        return 'price_type_day';
+    }
+  }
+
+  String formatPrice(BuildContext context, String price) {
+    String symbol = FFLocalizations.of(context).getText('currency_symbol');
+    String currentLanguage = FFLocalizations.of(context).languageCode;
+    
+    // Formata o número de acordo com a região
+    switch (currentLanguage) {
+      case 'ar':
+        return '$price $symbol'; // Símbolo depois do número para árabe
+      case 'pt':
+        return '$symbol $price'; // Símbolo antes do número com espaço para português
+      case 'es':
+        return '$price$symbol'; // Símbolo depois do número sem espaço para espanhol
+      default:
+        return '$symbol$price'; // Símbolo antes do número sem espaço para inglês
+    }
   }
 }

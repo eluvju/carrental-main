@@ -201,26 +201,30 @@ class _PromoCodeDetailPageWidgetState extends State<PromoCodeDetailPageWidget> {
                                       // Add your icon widget here
                                       InkWell(
                                         onTap: () {
-                                          // Add logic to copy coupon code to clipboard
                                           Clipboard.setData(ClipboardData(text: widget.coupon));
-                                          // You can also provide some feedback to the user (e.g., show a toast)
                                           ScaffoldMessenger.of(context).showSnackBar(
-                                            SnackBar(content: Text("Coupon code copied to clipboard")),
+                                            SnackBar(content: Text(
+                                              FFLocalizations.of(context).getText(
+                                                'coupon_copied' /* Coupon code copied to clipboard */,
+                                              ),
+                                            )),
                                           );
                                         },
                                         child: Icon(
-                                          Icons.content_copy, // You can replace this with your desired icon
+                                          Icons.content_copy,
                                           color: FlutterTheme.of(context).black600,
                                         ),
                                       ),
-                                      SizedBox(width: 8.0), // Adjust spacing between icon and text
+                                      SizedBox(width: 8.0),
                                       GestureDetector(
                                         onTap: () {
-                                          // Add logic to copy coupon code to clipboard
                                           Clipboard.setData(ClipboardData(text: widget.coupon));
-                                          // You can also provide some feedback to the user (e.g., show a toast)
                                           ScaffoldMessenger.of(context).showSnackBar(
-                                            SnackBar(content: Text("Coupon code copied to clipboard")),
+                                            SnackBar(content: Text(
+                                              FFLocalizations.of(context).getText(
+                                                'coupon_copied' /* Coupon code copied to clipboard */,
+                                              ),
+                                            )),
                                           );
                                         },
                                         child: Text(

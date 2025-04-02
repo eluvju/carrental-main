@@ -370,7 +370,7 @@ class _NavBarPageState extends State<NavBarPage> {
                     height: 20.5,
                   ),
                   Text(
-                  "Add List",
+                    FFLocalizations.of(context).getText('add_list'),
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: currentIndex == 2
