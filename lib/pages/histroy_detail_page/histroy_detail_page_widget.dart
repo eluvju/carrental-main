@@ -1641,8 +1641,8 @@ class _HistroyDetailPageWidgetState extends State<HistroyDetailPageWidget> {
                                                                 )
                                                                 .toString() ==
                                                             '5'
-                                                        ? 'Cancel'
-                                                        : 'Completed',
+                                                        ? FFLocalizations.of(context).getText('booking_status_cancelled')
+                                                        : FFLocalizations.of(context).getText('booking_status_delivered'),
                                                     options: FFButtonOptions(
                                                       height: 40.0,
                                                       padding:
@@ -1667,12 +1667,8 @@ class _HistroyDetailPageWidgetState extends State<HistroyDetailPageWidget> {
                                                                   )
                                                                   .toString() ==
                                                               '5'
-                                                          ? FlutterTheme.of(
-                                                                  context)
-                                                              .error
-                                                          : FlutterTheme.of(
-                                                                  context)
-                                                              .secondary,
+                                                          ? Color(0xffFF3B30)
+                                                          : Color(0xff4ADB06),
                                                       textStyle:
                                                           FlutterTheme.of(
                                                                   context)

@@ -57,6 +57,7 @@ class Data {
   String? cancelby;
   String? tripCost;
   String? createdDate;
+  String? status;
 
   Data(
       {this.userId,
@@ -87,7 +88,8 @@ class Data {
         this.taxes,
         this.cancelby,
         this.tripCost,
-        this.createdDate});
+        this.createdDate,
+        this.status});
 
   Data.fromJson(Map<String, dynamic> json) {
     userId = json['user_id'];
@@ -124,6 +126,7 @@ class Data {
     cancelby = json['cancelby'];
     tripCost = json['trip_cost'];
     createdDate = json['created_date'];
+    status = json['status'];
   }
 
   Map<String, dynamic> toJson() {
@@ -159,6 +162,7 @@ class Data {
     data['cancelby'] = this.cancelby;
     data['trip_cost'] = this.tripCost;
     data['created_date'] = this.createdDate;
+    data['status'] = this.status;
     return data;
   }
 }

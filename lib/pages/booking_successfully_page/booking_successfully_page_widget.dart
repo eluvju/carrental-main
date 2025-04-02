@@ -130,27 +130,25 @@ class _BookingSuccessfullyPageWidgetState
                         height: 20,
                       ),
                       Text(
-                      "Booking Successful!",
-                        style: FlutterTheme.of(context)
-                            .bodyMedium
-                            .override(
+                        FFLocalizations.of(context).getText('booking_success_title'),
+                        style: FlutterTheme.of(context).headlineMedium.override(
                           fontFamily: 'Urbanist',
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w700,
+                          color: FlutterTheme.of(context).primaryText,
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.w600
                         ),
                       ),
                       SizedBox(
                         height: 20,
                       ),
                       Text(
-                      "Your Amount Payable",
-                        style: FlutterTheme.of(context)
-                            .bodyMedium
-                            .override(
+                        FFLocalizations.of(context).getText('booking_success_message'),
+                        textAlign: TextAlign.center,
+                        style: FlutterTheme.of(context).titleSmall.override(
                           fontFamily: 'Urbanist',
-                          fontSize: 14.0,
-                          color: Color(0xff553FA5),
-                          fontWeight: FontWeight.w400,
+                          color: FlutterTheme.of(context).secondaryText,
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w400
                         ),
                       ),
                       SizedBox(

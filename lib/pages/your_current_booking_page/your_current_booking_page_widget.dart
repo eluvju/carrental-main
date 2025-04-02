@@ -46,6 +46,70 @@ class _YourCurrentBookingPageWidgetState
   bool _isVisiblenew = false;
   bool _isLoading = false;
 
+  Widget _buildStatusContainer(BuildContext context, String? status, {bool isHistory = false}) {
+    String statusText;
+    Color backgroundColor;
+    Color textColor;
+
+    // Se for histórico, verifica primeiro se foi cancelado
+    if (isHistory) {
+      if (_historyBooking?.data?[0]?.cancelby != null) {
+        status = "5"; // Cancelado
+      } else if (status == "4" || status == null) {
+        status = "4"; // Entregue
+      }
+    }
+
+    switch (status) {
+      case "1":
+        statusText = FFLocalizations.of(context).getText('booking_status_open');
+        backgroundColor = Color(0xffFAF9FE);
+        textColor = Color(0xff0D0C0F);
+        break;
+      case "2":
+        statusText = FFLocalizations.of(context).getText('booking_status_accepted');
+        backgroundColor = Color(0xff4ADB06).withOpacity(0.06);
+        textColor = Color(0xff4ADB06);
+        break;
+      case "3":
+        statusText = FFLocalizations.of(context).getText('booking_status_picked_up');
+        backgroundColor = Color(0xffFFBB35).withOpacity(0.06);
+        textColor = Color(0xffFFBB35);
+        break;
+      case "4":
+        statusText = FFLocalizations.of(context).getText('booking_status_delivered');
+        backgroundColor = Color(0xff4ADB06).withOpacity(0.06);
+        textColor = Color(0xff4ADB06);
+        break;
+      case "5":
+        statusText = FFLocalizations.of(context).getText('booking_status_cancelled');
+        backgroundColor = Color(0xffFF3B30).withOpacity(0.06);
+        textColor = Color(0xffFF3B30);
+        break;
+      default:
+        statusText = FFLocalizations.of(context).getText('booking_status_open');
+        backgroundColor = Color(0xffFAF9FE);
+        textColor = Color(0xff0D0C0F);
+    }
+
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(6.0),
+      ),
+      child: Text(
+        statusText,
+        style: FlutterTheme.of(context).titleSmall.override(
+          fontFamily: 'Urbanist',
+          color: textColor,
+          fontSize: 12,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
@@ -92,13 +156,12 @@ class _YourCurrentBookingPageWidgetState
           backgroundColor: FlutterTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
           title: Text(
-            FFLocalizations.of(context).getText(
-              '64j4t9wx' /* Booking */,
-            ),
+            FFLocalizations.of(context).getText('booking'),
             style: FlutterTheme.of(context).headlineMedium.override(
                   fontFamily: 'Urbanist',
                   color: FlutterTheme.of(context).primaryText,
-                  fontSize: 18.0,fontWeight: FontWeight.w500
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600
                 ),
           ),
           actions: [],
@@ -149,14 +212,10 @@ class _YourCurrentBookingPageWidgetState
                             EdgeInsetsDirectional.fromSTEB(4.0, 4.0, 4.0, 4.0),
                         tabs: [
                           Tab(
-                            text: FFLocalizations.of(context).getText(
-                              'zmr4vt9t' /* Current Booking */,
-                            ),
+                            text: FFLocalizations.of(context).getText('current_booking'),
                           ),
                           Tab(
-                            text: FFLocalizations.of(context).getText(
-                              'zt1l5kzn' /* History */,
-                            ),
+                            text: FFLocalizations.of(context).getText('booking_history'),
                           ),
                         ],
                         controller: _model.tabBarController,
@@ -256,195 +315,112 @@ class _YourCurrentBookingPageWidgetState
                                                         width: 60,
                                                         height: 24,
                                                         decoration: BoxDecoration(
-                                                          color: Color(0xffFAF9FE
-                                                          ),
+                                                          color: Color(0xffFAF9FE),
                                                           border: Border.all(
                                                             color: Color(0xff0D0C0F),
                                                           ),
                                                           borderRadius: BorderRadius.circular(8.0),
                                                         ),
-                                                        child: Padding(
-                                                          padding: const EdgeInsets.symmetric(horizontal: 0.0,vertical: 0),
-                                                          child: Row(
-                                                            children: [
-                                                              SizedBox(
-                                                                width: 5,
+                                                        child: Row(
+                                                          children: [
+                                                            SizedBox(width: 5),
+                                                            Icon(Icons.star, size: 10, color: Color(0xffFFBB35)),
+                                                            SizedBox(width: 5),
+                                                            Text(
+                                                              _currentBooking!.data![item].rating!.toString() == "0.00"
+                                                                  ? "5.0"
+                                                                  : _currentBooking!.data![item].rating!.toString(),
+                                                              style: FlutterTheme.of(context).titleSmall.override(
+                                                                fontFamily: 'Urbanist',
+                                                                color: Color(0xff0D0C0F),
+                                                                fontSize: 12,
                                                               ),
-                                                              Icon(Icons.star,size: 10,color: Color(0xffFFBB35),),
-                                                              SizedBox(
-                                                                width: 5,
-                                                              ),
-
-                                                              Text(
-                                                                _currentBooking!.data![item].rating!
-                                                                    .toString()=="0.00"?"5.0":_currentBooking!.data![item].rating!
-                                                                    .toString(), style: FlutterTheme.of(context).titleSmall.override(
-                                                                  fontFamily: 'Urbanist',
-                                                                  color: Color(0xff0D0C0F),fontSize: 12
-                                                              ),
-                                                              ),
-
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 8.8,
-                                                      ),
-                                                      Container(
-                                                        width: 85,
-                                                        height: 24,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color:
-                                                              Color(0xff4ADB06)
-                                                                  .withOpacity(
-                                                                      0.06),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      6.0),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .symmetric(
-                                                                  horizontal:
-                                                                      2.0,
-                                                                  vertical: 0),
-                                                          child: Center(
-                                                            child: Text(
-                                                              "Available now",
-                                                              style: FlutterTheme
-                                                                      .of(
-                                                                          context)
-                                                                  .titleSmall
-                                                                  .override(
-                                                                      fontFamily:
-                                                                          'Urbanist',
-                                                                      color: Color(
-                                                                          0xff4ADB06),
-                                                                      fontSize:
-                                                                          12),
                                                             ),
-                                                          ),
+                                                          ],
                                                         ),
                                                       ),
-                                                      SizedBox(
-                                                        width: 5.8,
-                                                      ),
-                                                      Icon(
-                                                        Icons.directions_walk,
-                                                        color:
-                                                            Color(0xff7C8BA0),
-                                                        size: 12,
-                                                      ),
-                                                      Text(
-                                                        " ${distance.toStringAsFixed(2)} km",
-                                                        style: FlutterTheme.of(
-                                                                context)
-                                                            .titleSmall
-                                                            .override(
-                                                                fontFamily:
-                                                                    'Urbanist',
-                                                                color: Color(
-                                                                    0xff0D0C0F),
-                                                                fontSize: 10),
-                                                      ),
-                                                      Text(
-                                                        "(${travelTime})",
-                                                        overflow: TextOverflow
-                                                            .ellipsis,
-                                                        style: FlutterTheme.of(
-                                                                context)
-                                                            .titleSmall
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Urbanist',
-                                                              fontSize: 10,
-                                                              color: Color(
-                                                                  0xff7C8BA0),
-                                                            ),
-                                                      ),
+                                                      SizedBox(width: 8),
+                                                      _buildStatusContainer(context, _currentBooking!.data![item].status.toString()),
                                                     ],
                                                   ),
-
-                                                  ///======commented part
-                                                  InkWell(
-                                                    onTap: () {
-                                                      setState(() {
-                                                        if (_currentBooking!
-                                                                .data![item]
-                                                                .favStatus
-                                                                .toString() ==
-                                                            "0") {
-                                                          _currentBooking!
-                                                              .data![item]
-                                                              .favStatus = "1";
-                                                          Helper.checkInternet(
-                                                              favourite(
-                                                                  _currentBooking!
-                                                                      .data![
-                                                                          item]
-                                                                      .carId
-                                                                      .toString()));
-                                                        } else {
-                                                          _currentBooking!
-                                                              .data![item]
-                                                              .favStatus = "0";
-                                                          Helper.checkInternet(
-                                                              Unfavourite(
-                                                                  _currentBooking!
-                                                                      .data![
-                                                                          item]
-                                                                      .carId
-                                                                      .toString()));
-                                                        }
-                                                      });
-                                                      // setState(() {
-                                                      //   isFavourite = !isFavourite;
-                                                      // });
-                                                      //
-                                                      // if (isFavourite) {
-                                                      //   Helper.checkInternet(favourite(_catergorywiseCar!.data![item].carId.toString()));
-                                                      // } else {
-                                                      //   Helper.checkInternet(Unfavourite(_catergorywiseCar!.data![item].carId.toString()));
-                                                      // }
-                                                    },
-                                                    child: SvgPicture.asset(
-                                                      _currentBooking!
-                                                                  .data![item]
-                                                                  .favStatus ==
-                                                              "1"
-                                                          ? 'assets/images/bookmark-03.svg'
-                                                          : 'assets/images/bookmark_outline-03.svg',
-                                                      width: 30.33,
-                                                      height: 28.5,
+                                                  SizedBox(
+                                                    width: 8.8,
+                                                  ),
+                                                  Container(
+                                                    width: 85,
+                                                    height: 24,
+                                                    decoration:
+                                                        BoxDecoration(
+                                                      color:
+                                                          Color(0xff4ADB06)
+                                                              .withOpacity(
+                                                                  0.06),
+                                                      borderRadius:
+                                                          BorderRadius
+                                                              .circular(
+                                                                  6.0),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets
+                                                              .symmetric(
+                                                              horizontal:
+                                                                  2.0,
+                                                              vertical: 0),
+                                                      child: Center(
+                                                        child: Text(
+                                                          FFLocalizations.of(context).getText('available_now'),
+                                                          style: FlutterTheme
+                                                                  .of(
+                                                                      context)
+                                                              .titleSmall
+                                                              .override(
+                                                                  fontFamily:
+                                                                      'Urbanist',
+                                                                  color: Color(
+                                                                      0xff4ADB06),
+                                                                  fontSize:
+                                                                      12),
+                                                        ),
+                                                      ),
                                                     ),
                                                   ),
-
-                                                  ///======commented part
-
-                                                  // InkWell(
-                                                  //   onTap: () {
-                                                  //     Helper.checkInternet(favourite(_catergorywiseCar!.data![item].carId.toString()));
-                                                  //   },
-                                                  //   child: SvgPicture.asset(
-                                                  //     'assets/images/bookmark-03.svg',
-                                                  //     width: 30.33,
-                                                  //     height: 28.5,
-                                                  //   ),
-                                                  // ),
-                                                  // InkWell(
-                                                  //   onTap: () {
-                                                  //     Helper.checkInternet(Unfavourite(_catergorywiseCar!.data![item].carId.toString()));
-                                                  //   },
-                                                  //   child: SvgPicture.asset(
-                                                  //     'assets/images/bookmark_outline-03.svg',
-                                                  //     width: 30.33,
-                                                  //     height: 28.5,
-                                                  //   ),
-                                                  // ),
+                                                  SizedBox(
+                                                    width: 5.8,
+                                                  ),
+                                                  Icon(
+                                                    Icons.directions_walk,
+                                                    color:
+                                                        Color(0xff7C8BA0),
+                                                    size: 12,
+                                                  ),
+                                                  Text(
+                                                    " ${distance.toStringAsFixed(2)} km",
+                                                    style: FlutterTheme.of(
+                                                            context)
+                                                        .titleSmall
+                                                        .override(
+                                                            fontFamily:
+                                                                'Urbanist',
+                                                            color: Color(
+                                                                0xff0D0C0F),
+                                                            fontSize: 10),
+                                                  ),
+                                                  Text(
+                                                    "(${travelTime})",
+                                                    overflow: TextOverflow
+                                                        .ellipsis,
+                                                    style: FlutterTheme.of(
+                                                            context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Urbanist',
+                                                          fontSize: 10,
+                                                          color: Color(
+                                                              0xff7C8BA0),
+                                                        ),
+                                                  ),
                                                 ],
                                               ),
                                               Image.network(
@@ -511,7 +487,7 @@ class _YourCurrentBookingPageWidgetState
                                                   Row(
                                                     children: [
                                                       Text(
-                                                        "\$${_currentBooking!.data![item].carCost.toString()}"+"/",
+                                                        "${FFLocalizations.of(context).getText('currency_symbol')}${_currentBooking!.data![item].carCost.toString()}",
                                                         style: FlutterTheme.of(
                                                                 context)
                                                             .titleSmall
@@ -523,10 +499,7 @@ class _YourCurrentBookingPageWidgetState
                                                                 fontSize: 16),
                                                       ),
                                                       Text(
-                                                        _currentBooking!
-                                                            .data![item]
-                                                            .priceType
-                                                            .toString(),
+                                                        FFLocalizations.of(context).getText('price_type_hourly'),
                                                         style: FlutterTheme.of(
                                                                 context)
                                                             .titleSmall
@@ -614,7 +587,7 @@ class _YourCurrentBookingPageWidgetState
                                                         width: 8.8,
                                                       ),
                                                       Text(
-                                                        "${_currentBooking!.data![item].carSeat.toString()} Seater",
+                                                        "${_currentBooking!.data![item].carSeat.toString()} ${FFLocalizations.of(context).getText('seater')}",
                                                         style: FlutterTheme.of(
                                                                 context)
                                                             .titleSmall
@@ -1206,10 +1179,13 @@ class _YourCurrentBookingPageWidgetState
 //                                                                   padding: const EdgeInsets.symmetric(horizontal: 2.0,vertical: 0),
 //                                                                   child: Center(
 //                                                                     child: Text(
-//                                                                       "Available now", style: FlutterTheme.of(context).titleSmall.override(
+//                                                                       FFLocalizations.of(context).getText('available_now'),
+//                                                                       style: FlutterTheme.of(context).titleSmall.override(
 //                                                                         fontFamily: 'Urbanist',
-//                                                                         color: Color(0xff4ADB06),fontSize: 12
-//                                                                     ),
+//                                                                         color: Color(0xff4ADB06),
+//                                                                         fontSize: 12
+//                                                                       ),
+//                                                                       ),
 //                                                                     ),
 //                                                                   ),
 //                                                                 ),
@@ -1326,13 +1302,14 @@ class _YourCurrentBookingPageWidgetState
 //                                                           Row(
 //                                                             children: [
 //                                                               Text(
-//                                                                 "\$${_currentBooking!.data![item].carCost.toString()}", style: FlutterTheme.of(context).titleSmall.override(
+//                                                                 "${FFLocalizations.of(context).getText('currency_symbol')}${_currentBooking!.data![item].carCost.toString()}",
+//                                                                 style: FlutterTheme.of(context).titleSmall.override(
 //                                                                   fontFamily: 'Urbanist',
 //                                                                   color: Color(0xff0D0C0F),fontSize: 16
 //                                                               ),
 //                                                               ),
 //                                                               Text(
-//                                                                 _currentBooking!.data![item].priceType.toString(), style: FlutterTheme.of(context).titleSmall.override(
+//                                                                 FFLocalizations.of(context).getText('price_type_hourly'), style: FlutterTheme.of(context).titleSmall.override(
 //                                                                 fontFamily: 'Urbanist',fontSize: 12,
 //                                                                 color: Color(0xff7C8BA0),
 //                                                               ),
@@ -1398,7 +1375,7 @@ class _YourCurrentBookingPageWidgetState
 //                                                                 width: 8.8,
 //                                                               ),
 //                                                               Text(
-//                                                                 "${ _currentBooking!.data![item].carSeat.toString()} Seater", style: FlutterTheme.of(context).titleSmall.override(
+//                                                                 "${_currentBooking!.data![item].carSeat.toString()} ${FFLocalizations.of(context).getText('seater')}", style: FlutterTheme.of(context).titleSmall.override(
 //                                                                 fontFamily: 'Urbanist',fontSize: 14,fontWeight: FontWeight.w400,
 //                                                                 color: Color(0xff7C8BA0),
 //                                                               ),
@@ -1614,7 +1591,7 @@ class _YourCurrentBookingPageWidgetState
 //                                                                   vertical: 0),
 //                                                           child: Center(
 //                                                             child: Text(
-//                                                               "Available now",
+//                                                               FFLocalizations.of(context).getText('available_now'),
 //                                                               style: FlutterTheme
 //                                                                       .of(
 //                                                                           context)
@@ -1811,7 +1788,7 @@ class _YourCurrentBookingPageWidgetState
 //                                                   Row(
 //                                                     children: [
 //                                                       Text(
-//                                                         "\$${_currentBooking!.data![item].tripCost.toString()}",
+//                                                         "${FFLocalizations.of(context).getText('currency_symbol')}${_currentBooking!.data![item].tripCost.toString()}",
 //                                                         style: FlutterTheme.of(
 //                                                                 context)
 //                                                             .titleSmall
@@ -1823,10 +1800,7 @@ class _YourCurrentBookingPageWidgetState
 //                                                                 fontSize: 16),
 //                                                       ),
 //                                                       Text(
-//                                                         _currentBooking!
-//                                                             .data![item]
-//                                                             .priceType
-//                                                             .toString(),
+//                                                         FFLocalizations.of(context).getText('price_type_hourly'),
 //                                                         style: FlutterTheme.of(
 //                                                                 context)
 //                                                             .titleSmall
@@ -1914,7 +1888,7 @@ class _YourCurrentBookingPageWidgetState
 //                                                         width: 8.8,
 //                                                       ),
 //                                                       Text(
-//                                                         "${_currentBooking!.data![item].carSeat.toString()} Seater",
+//                                                         "${_currentBooking!.data![item].carSeat.toString()} ${FFLocalizations.of(context).getText('seater')}",
 //                                                         style: FlutterTheme.of(
 //                                                                 context)
 //                                                             .titleSmall
@@ -1944,922 +1918,253 @@ class _YourCurrentBookingPageWidgetState
                         ///=========commenting part===========
                           _historyBooking == null
                               ? _hasData
-                              ? Container()
-                              : Container(
-                            child: Center(
-                              child: Text("NO DATA"),
-                            ),
-                          ):
-                          ListView.builder(
-                            padding: EdgeInsets.zero,
-                            scrollDirection: Axis.vertical,
-                            itemCount: _historyBooking!.data!.length,
-                            // itemCount: _allCategoryModel!.data!.length,
-                            itemBuilder: (context, item) {
-                              print(
-                                  "=====_allCategoryModel!.data!.length======${_historyBooking!.data!.length}");
-                              double distance = calculateDistance(
-                                  double.parse(SessionHelper().get(SessionHelper.LATITUDE).toString()),
-                                  double.parse(SessionHelper().get(SessionHelper.LONGITUDE).toString()),
-                                  double.parse(_historyBooking!
-                                      .data![item].pickLat1
-                                      .toString()),
-                                  double.parse(_historyBooking!
-                                      .data![item].pickLong1
-                                      .toString()));
-                              String travelTime = calculateTravelTime(
-                                  double.parse(SessionHelper().get(SessionHelper.LATITUDE).toString()),
-                                  double.parse(SessionHelper().get(SessionHelper.LONGITUDE).toString()),
-                                  double.parse(_historyBooking!
-                                      .data![item].pickLat1
-                                      .toString()),
-                                  double.parse(_historyBooking!
-                                      .data![item].pickLong1
-                                      .toString()),
-                                  80);
-                              // print("=====_isSelected2222=====${isSelected}");
-                              // final category = _catergorywiseCar!.data![item];
-                              // final imagePath = eachCategoryWithImages[category];
-                              //  isSelected = _allCategoryModel!.data![item].categoryName;
-                              //  print("====isSelected ghjegej===${isSelected}");
-                              return InkWell(
-                                onTap: () {
-                                  context.pushNamed(
-                                    'booking_detail_page',
-                                    queryParameters: {
-                                      'bookingId': _historyBooking!
-                                          .data![item].bookingId
-                                          .toString(),
-                                    }.withoutNulls,
-                                  );
-
-                                  // context.pushNamed(
-                                  //   'product_detail_page',
-                                  //   queryParameters: {
-                                  //     'carId': _currentBooking!
-                                  //         .data![item].carId
-                                  //         .toString()
-                                  //   }.withoutNulls,
-                                  // );
-                                  // context.pushNamed('product_detail_page');
-                                  // Helper.moveToScreenwithPush(context, ProductDetailPageWidget(hnmjh));
-                                  // Helper.checkInternet(categorywiselist(_allCategoryModel!.data![item].categoryName.toString()));
-                                },
-                                child: Container(
-                                  height: 270,
-                                  margin: EdgeInsets.only(right: 10),
-                                  width:
-                                  MediaQuery.of(context).size.width /
-                                      1.1,
-                                  decoration: BoxDecoration(
-                                      borderRadius:
-                                      BorderRadius.circular(10),
-                                      border: Border.all(
-                                          color: Color(0xffFAFAFA),
-                                          width: 1.5)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment
-                                              .spaceBetween,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Container(
-                                                  width: 60,
-                                                  height: 24,
-                                                  decoration: BoxDecoration(
-                                                    color: Color(0xffFAF9FE
-                                                    ),
-                                                    border: Border.all(
-                                                      color: Color(0xff0D0C0F),
-                                                    ),
-                                                    borderRadius: BorderRadius.circular(8.0),
-                                                  ),
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.symmetric(horizontal: 0.0,vertical: 0),
-                                                    child: Row(
-                                                      children: [
-                                                        SizedBox(
-                                                          width: 5,
+                                  ? Container()
+                                  : Container(
+                                      child: Center(
+                                        child: Text(FFLocalizations.of(context).getText('no_data')),
+                                      ),
+                                    )
+                              : ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: _historyBooking!.data!.length,
+                                  itemBuilder: (context, item) {
+                                    return InkWell(
+                                      onTap: () {
+                                        context.pushNamed(
+                                          'booking_detail_page',
+                                          queryParameters: {
+                                            'bookingId': _historyBooking!
+                                                .data![item].bookingId
+                                                .toString(),
+                                          }.withoutNulls,
+                                        );
+                                      },
+                                      child: Container(
+                                        height: 270,
+                                        margin: EdgeInsets.only(right: 10),
+                                        width: MediaQuery.of(context).size.width / 1.1,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10),
+                                          border: Border.all(
+                                            color: Color(0xffFAFAFA),
+                                            width: 1.5
+                                          )
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      Container(
+                                                        width: 60,
+                                                        height: 24,
+                                                        decoration: BoxDecoration(
+                                                          color: Color(0xffFAF9FE),
+                                                          border: Border.all(
+                                                            color: Color(0xff0D0C0F),
+                                                          ),
+                                                          borderRadius: BorderRadius.circular(8.0),
                                                         ),
-                                                        Icon(Icons.star,size: 10,color: Color(0xffFFBB35),),
-                                                        SizedBox(
-                                                          width: 5,
+                                                        child: Row(
+                                                          children: [
+                                                            SizedBox(width: 5),
+                                                            Icon(Icons.star, size: 10, color: Color(0xffFFBB35)),
+                                                            SizedBox(width: 5),
+                                                            Text(
+                                                              _historyBooking!.data![item].rating!.toString() == "0.00"
+                                                                  ? "5.0"
+                                                                  : _historyBooking!.data![item].rating!.toString(),
+                                                              style: FlutterTheme.of(context).titleSmall.override(
+                                                                fontFamily: 'Urbanist',
+                                                                color: Color(0xff0D0C0F),
+                                                                fontSize: 12,
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
-
-                                                        Text(
-                                                          _currentBooking!.data![item].rating!
-                                                              .toString()=="0.00"?"5.0":_currentBooking!.data![item].rating!
-                                                              .toString(), style: FlutterTheme.of(context).titleSmall.override(
-                                                            fontFamily: 'Urbanist',
-                                                            color: Color(0xff0D0C0F),fontSize: 12
-                                                        ),
-                                                        ),
-
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: 8.8,
-                                                ),
-                                                Container(
-                                                  width: 85,
-                                                  height: 24,
-                                                  decoration:
-                                                  BoxDecoration(
-                                                    color:
-                                                    Color(0xff4ADB06)
-                                                        .withOpacity(
-                                                        0.06),
-                                                    borderRadius:
-                                                    BorderRadius
-                                                        .circular(
-                                                        6.0),
-                                                  ),
-                                                  child: Padding(
-                                                    padding:
-                                                    const EdgeInsets
-                                                        .symmetric(
-                                                        horizontal:
-                                                        2.0,
-                                                        vertical: 0),
-                                                    child: Center(
-                                                      child: Text(
-                                                        "Available now",
-                                                        style: FlutterTheme
-                                                            .of(
-                                                            context)
-                                                            .titleSmall
-                                                            .override(
-                                                            fontFamily:
-                                                            'Urbanist',
-                                                            color: Color(
-                                                                0xff4ADB06),
-                                                            fontSize:
-                                                            12),
                                                       ),
+                                                      SizedBox(width: 8),
+                                                      _buildStatusContainer(
+                                                        context, 
+                                                        _historyBooking!.data![item].status,
+                                                        isHistory: true
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        if (_historyBooking!.data![item].favStatus.toString() == "0") {
+                                                          _historyBooking!.data![item].favStatus = "1";
+                                                          Helper.checkInternet(favourite(_historyBooking!.data![item].carId.toString()));
+                                                        } else {
+                                                          _historyBooking!.data![item].favStatus = "0";
+                                                          Helper.checkInternet(Unfavourite(_historyBooking!.data![item].carId.toString()));
+                                                        }
+                                                      });
+                                                    },
+                                                    child: SvgPicture.asset(
+                                                      _historyBooking!.data![item].favStatus == "1"
+                                                          ? 'assets/images/bookmark-03.svg'
+                                                          : 'assets/images/bookmark_outline-03.svg',
+                                                      width: 30.33,
+                                                      height: 28.5,
                                                     ),
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                  width: 5.8,
-                                                ),
-                                                Icon(
-                                                  Icons.directions_walk,
-                                                  color:
-                                                  Color(0xff7C8BA0),
-                                                  size: 12,
-                                                ),
-                                                Text(
-                                                  " ${distance.toStringAsFixed(2)} km",
-                                                  style: FlutterTheme.of(
-                                                      context)
-                                                      .titleSmall
-                                                      .override(
-                                                      fontFamily:
-                                                      'Urbanist',
-                                                      color: Color(
-                                                          0xff0D0C0F),
-                                                      fontSize: 10),
-                                                ),
-                                                Text(
-                                                  "(${travelTime})",
-                                                  overflow: TextOverflow
-                                                      .ellipsis,
-                                                  style: FlutterTheme.of(
-                                                      context)
-                                                      .titleSmall
-                                                      .override(
-                                                    fontFamily:
-                                                    'Urbanist',
-                                                    fontSize: 10,
-                                                    color: Color(
-                                                        0xff7C8BA0),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-
-                                            ///======commented part
-                                            InkWell(
-                                              onTap: () {
-                                                setState(() {
-                                                  if (_historyBooking!
-                                                      .data![item]
-                                                      .favStatus
-                                                      .toString() ==
-                                                      "0") {
-                                                    _historyBooking!
-                                                        .data![item]
-                                                        .favStatus = "1";
-                                                    Helper.checkInternet(
-                                                        favourite(
-                                                            _historyBooking!
-                                                                .data![
-                                                            item]
-                                                                .carId
-                                                                .toString()));
-                                                  } else {
-                                                    _historyBooking!
-                                                        .data![item]
-                                                        .favStatus = "0";
-                                                    Helper.checkInternet(
-                                                        Unfavourite(
-                                                            _historyBooking!
-                                                                .data![
-                                                            item]
-                                                                .carId
-                                                                .toString()));
-                                                  }
-                                                });
-                                                // setState(() {
-                                                //   isFavourite = !isFavourite;
-                                                // });
-                                                //
-                                                // if (isFavourite) {
-                                                //   Helper.checkInternet(favourite(_catergorywiseCar!.data![item].carId.toString()));
-                                                // } else {
-                                                //   Helper.checkInternet(Unfavourite(_catergorywiseCar!.data![item].carId.toString()));
-                                                // }
-                                              },
-                                              child: SvgPicture.asset(
-                                                _historyBooking!
-                                                    .data![item]
-                                                    .favStatus ==
-                                                    "1"
-                                                    ? 'assets/images/bookmark-03.svg'
-                                                    : 'assets/images/bookmark_outline-03.svg',
-                                                width: 30.33,
-                                                height: 28.5,
+                                                ],
                                               ),
-                                            ),
-
-                                            ///======commented part
-
-                                            // InkWell(
-                                            //   onTap: () {
-                                            //     Helper.checkInternet(favourite(_catergorywiseCar!.data![item].carId.toString()));
-                                            //   },
-                                            //   child: SvgPicture.asset(
-                                            //     'assets/images/bookmark-03.svg',
-                                            //     width: 30.33,
-                                            //     height: 28.5,
-                                            //   ),
-                                            // ),
-                                            // InkWell(
-                                            //   onTap: () {
-                                            //     Helper.checkInternet(Unfavourite(_catergorywiseCar!.data![item].carId.toString()));
-                                            //   },
-                                            //   child: SvgPicture.asset(
-                                            //     'assets/images/bookmark_outline-03.svg',
-                                            //     width: 30.33,
-                                            //     height: 28.5,
-                                            //   ),
-                                            // ),
-                                          ],
-                                        ),
-                                        Image.network(
-                                          _historyBooking!.data![item]
-                                              .carImage![item].image
-                                              .toString(),
-                                          width: 240.33,
-                                          height: 130.5,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment
-                                              .spaceBetween,
-                                          children: [
-                                            Column(
-                                              mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                              CrossAxisAlignment
-                                                  .start,
-                                              children: [
-                                                Text(
-                                                  _historyBooking!
-                                                      .data![item].carName
-                                                      .toString(),
-                                                  style: FlutterTheme.of(
-                                                      context)
-                                                      .titleSmall
-                                                      .override(
-                                                    fontFamily:
-                                                    'Urbanist',
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                    FontWeight
-                                                        .w400,
-                                                    color: Color(
-                                                        0xff7C8BA0),
+                                              Image.network(
+                                                _historyBooking!.data![item].carImage![0].image ?? "",
+                                                width: 240.33,
+                                                height: 130.5,
+                                                fit: BoxFit.cover,
+                                              ),
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                children: [
+                                                  Column(
+                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                                    children: [
+                                                      Text(
+                                                        _historyBooking!.data![item].carName ?? "",
+                                                        style: FlutterTheme.of(context).titleSmall.override(
+                                                          fontFamily: 'Urbanist',
+                                                          fontSize: 14,
+                                                          fontWeight: FontWeight.w400,
+                                                          color: Color(0xff7C8BA0),
+                                                        ),
+                                                      ),
+                                                      SizedBox(height: 5),
+                                                      Text(
+                                                        _historyBooking!.data![item].brandName ?? "",
+                                                        style: FlutterTheme.of(context).titleSmall.override(
+                                                          fontFamily: 'Urbanist',
+                                                          fontSize: 16,
+                                                          fontWeight: FontWeight.w400,
+                                                          color: Color(0xff0D0C0F),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
-                                                ),
-                                                SizedBox(
-                                                  height: 5,
-                                                ),
-                                                Text(
-                                                  _historyBooking!
-                                                      .data![item]
-                                                      .brandName
-                                                      .toString(),
-                                                  style: FlutterTheme.of(
-                                                      context)
-                                                      .titleSmall
-                                                      .override(
-                                                    fontFamily:
-                                                    'Urbanist',
-                                                    fontSize: 16,
-                                                    fontWeight:
-                                                    FontWeight
-                                                        .w400,
-                                                    color: Color(
-                                                        0xff0D0C0F),
+                                                  Row(
+                                                    children: [
+                                                      Text(
+                                                        "${FFLocalizations.of(context).getText('currency_symbol')}${_historyBooking!.data![item].carCost}/",
+                                                        style: FlutterTheme.of(context).titleSmall.override(
+                                                          fontFamily: 'Urbanist',
+                                                          color: Color(0xff0D0C0F),
+                                                          fontSize: 14
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        FFLocalizations.of(context).getText('price_type_' + _historyBooking!.data![item].priceType.toString().toLowerCase()),
+                                                        style: FlutterTheme.of(context).titleSmall.override(
+                                                          fontFamily: 'Urbanist',
+                                                          fontSize: 14,
+                                                          color: Color(0xff7C8BA0),
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        " - ",
+                                                        style: FlutterTheme.of(context).titleSmall.override(
+                                                          fontFamily: 'Urbanist',
+                                                          fontSize: 14,
+                                                          color: Color(0xff7C8BA0),
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        "${FFLocalizations.of(context).getText('total_label')} ${FFLocalizations.of(context).getText('currency_symbol')}${_historyBooking!.data![item].tripCost}",
+                                                        style: FlutterTheme.of(context).titleSmall.override(
+                                                          fontFamily: 'Urbanist',
+                                                          color: Color(0xff4ADB06),
+                                                          fontSize: 14,
+                                                          fontWeight: FontWeight.w600
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                Text(
-                                                  "\$${_historyBooking!.data![item].carCost.toString()}"+"/",
-                                                  style: FlutterTheme.of(
-                                                      context)
-                                                      .titleSmall
-                                                      .override(
-                                                      fontFamily:
-                                                      'Urbanist',
-                                                      color: Color(
-                                                          0xff0D0C0F),
-                                                      fontSize: 16),
-                                                ),
-                                                Text(
-                                                  _historyBooking!
-                                                      .data![item]
-                                                      .priceType
-                                                      .toString(),
-                                                  style: FlutterTheme.of(
-                                                      context)
-                                                      .titleSmall
-                                                      .override(
-                                                    fontFamily:
-                                                    'Urbanist',
-                                                    fontSize: 12,
-                                                    color: Color(
-                                                        0xff7C8BA0),
+                                                ],
+                                              ),
+                                              Divider(
+                                                color: Color(0xffAD3CFD6),
+                                                thickness: 0.5,
+                                              ),
+                                              SizedBox(height: 5),
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      SvgPicture.asset(
+                                                        'assets/images/sedan.svg',
+                                                        width: 18.33,
+                                                        height: 16.5,
+                                                      ),
+                                                      SizedBox(width: 8.8),
+                                                      Text(
+                                                        _historyBooking!.data![item].vehicleCategory ?? "",
+                                                        style: FlutterTheme.of(context).titleSmall.override(
+                                                          fontFamily: 'Urbanist',
+                                                          fontSize: 14,
+                                                          fontWeight: FontWeight.w400,
+                                                          color: Color(0xff7C8BA0),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
-                                                ),
-                                              ],
-                                            )
-                                          ],
+                                                  Row(
+                                                    children: [
+                                                      SvgPicture.asset(
+                                                        'assets/images/diesel.svg',
+                                                        width: 18.33,
+                                                        height: 16.5,
+                                                      ),
+                                                      SizedBox(width: 8.8),
+                                                      Text(
+                                                        _historyBooking!.data![item].specification ?? "",
+                                                        style: FlutterTheme.of(context).titleSmall.override(
+                                                          fontFamily: 'Urbanist',
+                                                          fontSize: 14,
+                                                          fontWeight: FontWeight.w400,
+                                                          color: Color(0xff7C8BA0),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      SvgPicture.asset(
+                                                        'assets/images/seater.svg',
+                                                        width: 18.33,
+                                                        height: 16.5,
+                                                      ),
+                                                      SizedBox(width: 8.8),
+                                                      Text(
+                                                        "${_historyBooking!.data![item].carSeat} ${FFLocalizations.of(context).getText('seater')}",
+                                                        style: FlutterTheme.of(context).titleSmall.override(
+                                                          fontFamily: 'Urbanist',
+                                                          fontSize: 14,
+                                                          fontWeight: FontWeight.w400,
+                                                          color: Color(0xff7C8BA0),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        Divider(
-                                          color: Color(0xffAD3CFD6),
-                                          thickness: 0.5,
-                                        ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment
-                                              .spaceAround,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                SvgPicture.asset(
-                                                  'assets/images/sedan.svg',
-                                                  width: 18.33,
-                                                  height: 16.5,
-                                                ),
-                                                SizedBox(
-                                                  width: 8.8,
-                                                ),
-                                                Text(
-                                                  _historyBooking!.data![item].vehicleCategory.toString(), style: FlutterTheme.of(context).titleSmall.override(
-                                                  fontFamily: 'Urbanist',fontSize: 14,fontWeight: FontWeight.w400,
-                                                  color: Color(0xff7C8BA0),
-                                                ),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                SvgPicture.asset(
-                                                  'assets/images/diesel.svg',
-                                                  width: 18.33,
-                                                  height: 16.5,
-                                                ),
-                                                SizedBox(
-                                                  width: 8.8,
-                                                ),
-                                                Text(
-                                                  _historyBooking!
-                                                      .data![item]
-                                                      .specification
-                                                      .toString(),
-                                                  style: FlutterTheme.of(
-                                                      context)
-                                                      .titleSmall
-                                                      .override(
-                                                    fontFamily:
-                                                    'Urbanist',
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                    FontWeight
-                                                        .w400,
-                                                    color: Color(
-                                                        0xff7C8BA0),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                SvgPicture.asset(
-                                                  'assets/images/seater.svg',
-                                                  width: 18.33,
-                                                  height: 16.5,
-                                                ),
-                                                SizedBox(
-                                                  width: 8.8,
-                                                ),
-                                                Text(
-                                                  "${_historyBooking!.data![item].carSeat.toString()} Seater",
-                                                  style: FlutterTheme.of(
-                                                      context)
-                                                      .titleSmall
-                                                      .override(
-                                                    fontFamily:
-                                                    'Urbanist',
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                    FontWeight
-                                                        .w400,
-                                                    color: Color(
-                                                        0xff7C8BA0),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        )
-                                      ],
-                                    ),
-                                  ),
+                                      ),
+                                    );
+                                  },
                                 ),
-                              );
-                            },
-                          ),
-                          // FutureBuilder<ApiCallResponse>(
-                          //   future: BaseUrlGroup.userhistoryBookingCall.call(
-                          //     userId: FFAppState().UserId,
-                          //   ),
-                          //   builder: (context, snapshot) {
-                          //     // Customize what your widget looks like when it's loading.
-                          //     if (!snapshot.hasData) {
-                          //       return Center(
-                          //         child: SizedBox(
-                          //           width: 50.0,
-                          //           height: 50.0,
-                          //           child: CircularProgressIndicator(
-                          //             valueColor: AlwaysStoppedAnimation<Color>(
-                          //               FlutterTheme.of(context).primary,
-                          //             ),
-                          //           ),
-                          //         ),
-                          //       );
-                          //     }
-                          //     final conditionalBuilderUserhistoryBookingResponse =
-                          //         snapshot.data!;
-                          //     return Builder(
-                          //       builder: (context) {
-                          //         if (getJsonField(
-                          //           conditionalBuilderUserhistoryBookingResponse
-                          //               .jsonBody,
-                          //           r'''$.response''',
-                          //         )) {
-                          //           return Builder(
-                          //             builder: (context) {
-                          //               final eachHistoryData = getJsonField(
-                          //                 conditionalBuilderUserhistoryBookingResponse
-                          //                     .jsonBody,
-                          //                 r'''$.data''',
-                          //               ).toList();
-                          //               return ListView.builder(
-                          //                 padding: EdgeInsets.zero,
-                          //                 scrollDirection: Axis.vertical,
-                          //                 itemCount: eachHistoryData.length,
-                          //                 itemBuilder:
-                          //                     (context, eachHistoryDataIndex) {
-                          //                   final eachHistoryDataItem =
-                          //                       eachHistoryData[
-                          //                           eachHistoryDataIndex];
-                          //                   return Card(
-                          //                     clipBehavior:
-                          //                         Clip.antiAliasWithSaveLayer,
-                          //                     color: FlutterTheme.of(context)
-                          //                         .secondaryBackground,
-                          //                     elevation: 4.0,
-                          //                     shape: RoundedRectangleBorder(
-                          //                       borderRadius:
-                          //                           BorderRadius.circular(8.0),
-                          //                     ),
-                          //                     child: Align(
-                          //                       alignment: AlignmentDirectional(
-                          //                           0.00, 1.00),
-                          //                       child: Row(
-                          //                         mainAxisSize:
-                          //                             MainAxisSize.max,
-                          //                         crossAxisAlignment:
-                          //                             CrossAxisAlignment.end,
-                          //                         children: [
-                          //                           Column(
-                          //                             mainAxisSize:
-                          //                                 MainAxisSize.max,
-                          //                             crossAxisAlignment:
-                          //                                 CrossAxisAlignment
-                          //                                     .center,
-                          //                             children: [
-                          //                               Card(
-                          //                                 clipBehavior: Clip
-                          //                                     .antiAliasWithSaveLayer,
-                          //                                 color: FlutterTheme
-                          //                                         .of(context)
-                          //                                     .secondaryBackground,
-                          //                                 elevation: 4.0,
-                          //                                 shape:
-                          //                                     RoundedRectangleBorder(
-                          //                                   borderRadius:
-                          //                                       BorderRadius
-                          //                                           .circular(
-                          //                                               8.0),
-                          //                                 ),
-                          //                                 child: Padding(
-                          //                                   padding:
-                          //                                       EdgeInsetsDirectional
-                          //                                           .fromSTEB(
-                          //                                               2.0,
-                          //                                               2.0,
-                          //                                               2.0,
-                          //                                               2.0),
-                          //                                   child: ClipRRect(
-                          //                                     borderRadius:
-                          //                                         BorderRadius
-                          //                                             .circular(
-                          //                                                 8.0),
-                          //                                     child:
-                          //                                         Image.network(
-                          //                                       getJsonField(
-                          //                                         eachHistoryDataItem,
-                          //                                         r'''$.car_image[0].image''',
-                          //                                       ),
-                          //                                       width: 182.0,
-                          //                                       height: 102.0,
-                          //                                       fit: BoxFit
-                          //                                           .cover,
-                          //                                     ),
-                          //                                   ),
-                          //                                 ),
-                          //                               ),
-                          //                               Row(
-                          //                                 mainAxisSize:
-                          //                                     MainAxisSize.max,
-                          //                                 children: [
-                          //                                   Text(
-                          //                                     FFLocalizations.of(
-                          //                                             context)
-                          //                                         .getText(
-                          //                                       '847bm6he' /* $ */,
-                          //                                     ),
-                          //                                     style: FlutterTheme
-                          //                                             .of(context)
-                          //                                         .bodyMedium
-                          //                                         .override(
-                          //                                           fontFamily:
-                          //                                               'Urbanist',
-                          //                                           color: FlutterTheme.of(
-                          //                                                   context)
-                          //                                               .primaryText,
-                          //                                         ),
-                          //                                   ),
-                          //                                   Text(
-                          //                                     getJsonField(
-                          //                                       eachHistoryDataItem,
-                          //                                       r'''$.trip_cost''',
-                          //                                     ).toString(),
-                          //                                     style: FlutterTheme
-                          //                                             .of(context)
-                          //                                         .bodyMedium
-                          //                                         .override(
-                          //                                           fontFamily:
-                          //                                               'Urbanist',
-                          //                                           color: FlutterTheme.of(
-                          //                                                   context)
-                          //                                               .primaryText,
-                          //                                         ),
-                          //                                   ),
-                          //                                   Text(
-                          //                                     FFLocalizations.of(
-                          //                                             context)
-                          //                                         .getText(
-                          //                                       'v2nw6ctr' /* / */,
-                          //                                     ),
-                          //                                     style: FlutterTheme
-                          //                                             .of(context)
-                          //                                         .bodyMedium
-                          //                                         .override(
-                          //                                           fontFamily:
-                          //                                               'Urbanist',
-                          //                                           color: FlutterTheme.of(
-                          //                                                   context)
-                          //                                               .primaryText,
-                          //                                         ),
-                          //                                   ),
-                          //                                   Text(
-                          //                                     FFLocalizations.of(
-                          //                                             context)
-                          //                                         .getText(
-                          //                                       'ul0cxoo5' /* Price */,
-                          //                                     ),
-                          //                                     style: FlutterTheme
-                          //                                             .of(context)
-                          //                                         .bodyMedium
-                          //                                         .override(
-                          //                                           fontFamily:
-                          //                                               'Urbanist',
-                          //                                           color: FlutterTheme.of(
-                          //                                                   context)
-                          //                                               .primaryText,
-                          //                                         ),
-                          //                                   ),
-                          //                                 ],
-                          //                               ),
-                          //                             ]
-                          //                                 .divide(SizedBox(
-                          //                                     height: 8.0))
-                          //                                 .addToEnd(SizedBox(
-                          //                                     height: 8.0)),
-                          //                           ),
-                          //                           Flexible(
-                          //                             child: Column(
-                          //                               mainAxisSize:
-                          //                                   MainAxisSize.max,
-                          //                               mainAxisAlignment:
-                          //                                   MainAxisAlignment
-                          //                                       .end,
-                          //                               crossAxisAlignment:
-                          //                                   CrossAxisAlignment
-                          //                                       .start,
-                          //                               children: [
-                          //                                 Padding(
-                          //                                   padding:
-                          //                                       EdgeInsetsDirectional
-                          //                                           .fromSTEB(
-                          //                                               0.0,
-                          //                                               0.0,
-                          //                                               8.0,
-                          //                                               0.0),
-                          //                                   child: Text(
-                          //                                     getJsonField(
-                          //                                       eachHistoryDataItem,
-                          //                                       r'''$.car_name''',
-                          //                                     ).toString(),
-                          //                                     style: FlutterTheme
-                          //                                             .of(context)
-                          //                                         .bodyMedium
-                          //                                         .override(
-                          //                                           fontFamily:
-                          //                                               'Urbanist',
-                          //                                           color: FlutterTheme.of(
-                          //                                                   context)
-                          //                                               .primary,
-                          //                                         ),
-                          //                                   ),
-                          //                                 ),
-                          //                                 // Material(
-                          //                                 //   color: Colors
-                          //                                 //       .transparent,
-                          //                                 //   elevation: 1.0,
-                          //                                 //   shape:
-                          //                                 //       RoundedRectangleBorder(
-                          //                                 //     borderRadius:
-                          //                                 //         BorderRadius
-                          //                                 //             .circular(
-                          //                                 //                 12.5),
-                          //                                 //   ),
-                          //                                 //   child: Container(
-                          //                                 //     width: 60.0,
-                          //                                 //     height: 25.0,
-                          //                                 //     decoration:
-                          //                                 //         BoxDecoration(
-                          //                                 //       color: FlutterTheme.of(
-                          //                                 //               context)
-                          //                                 //           .secondaryBackground,
-                          //                                 //       borderRadius:
-                          //                                 //           BorderRadius
-                          //                                 //               .circular(
-                          //                                 //                   12.5),
-                          //                                 //       shape: BoxShape
-                          //                                 //           .rectangle,
-                          //                                 //       border:
-                          //                                 //           Border.all(
-                          //                                 //         color: FlutterTheme.of(
-                          //                                 //                 context)
-                          //                                 //             .warning,
-                          //                                 //         width: 1.0,
-                          //                                 //       ),
-                          //                                 //     ),
-                          //                                 //     child: Padding(
-                          //                                 //       padding:
-                          //                                 //           EdgeInsetsDirectional
-                          //                                 //               .fromSTEB(
-                          //                                 //                   4.0,
-                          //                                 //                   4.0,
-                          //                                 //                   4.0,
-                          //                                 //                   4.0),
-                          //                                 //       child: Row(
-                          //                                 //         mainAxisSize:
-                          //                                 //             MainAxisSize
-                          //                                 //                 .max,
-                          //                                 //         mainAxisAlignment:
-                          //                                 //             MainAxisAlignment
-                          //                                 //                 .center,
-                          //                                 //         crossAxisAlignment:
-                          //                                 //             CrossAxisAlignment
-                          //                                 //                 .center,
-                          //                                 //         children: [
-                          //                                 //           Icon(
-                          //                                 //             Icons
-                          //                                 //                 .star_rate,
-                          //                                 //             color: FlutterTheme.of(
-                          //                                 //                     context)
-                          //                                 //                 .warning,
-                          //                                 //             size:
-                          //                                 //                 16.0,
-                          //                                 //           ),
-                          //                                 //           SizedBox(
-                          //                                 //             height:
-                          //                                 //                 0.0,
-                          //                                 //             child:
-                          //                                 //                 VerticalDivider(
-                          //                                 //               width:
-                          //                                 //                   5.0,
-                          //                                 //               thickness:
-                          //                                 //                   1.0,
-                          //                                 //               color: FlutterTheme.of(context)
-                          //                                 //                   .accent4,
-                          //                                 //             ),
-                          //                                 //           ),
-                          //                                 //           Flexible(
-                          //                                 //             child:
-                          //                                 //                 Text(
-                          //                                 //               getJsonField(
-                          //                                 //                 eachHistoryDataItem,
-                          //                                 //                 r'''$.rating''',
-                          //                                 //               ).toString(),
-                          //                                 //               style: FlutterTheme.of(context)
-                          //                                 //                   .bodyMedium,
-                          //                                 //             ),
-                          //                                 //           ),
-                          //                                 //         ],
-                          //                                 //       ),
-                          //                                 //     ),
-                          //                                 //   ),
-                          //                                 // ),
-                          //                                 Row(
-                          //                                   mainAxisSize:
-                          //                                       MainAxisSize
-                          //                                           .max,
-                          //                                   mainAxisAlignment:
-                          //                                       MainAxisAlignment
-                          //                                           .end,
-                          //                                   crossAxisAlignment:
-                          //                                       CrossAxisAlignment
-                          //                                           .center,
-                          //                                   children: [
-                          //                                     Expanded(
-                          //                                       child:
-                          //                                           FFButtonWidget(
-                          //                                         onPressed:
-                          //                                             () async {
-                          //                                           context
-                          //                                               .pushNamed(
-                          //                                             'histroy_detail_page',
-                          //                                             queryParameters:
-                          //                                                 {
-                          //                                               'bookingId':
-                          //                                                   serializeParam(
-                          //                                                 getJsonField(
-                          //                                                   eachHistoryDataItem,
-                          //                                                   r'''$.booking_id''',
-                          //                                                 ).toString(),
-                          //                                                 ParamType
-                          //                                                     .String,
-                          //                                               ),
-                          //                                             }.withoutNulls,
-                          //                                           );
-                          //                                         },
-                          //                                         text: FFLocalizations.of(
-                          //                                                 context)
-                          //                                             .getText(
-                          //                                           '963r5h1i' /* Details */,
-                          //                                         ),
-                          //                                         options:
-                          //                                             FFButtonOptions(
-                          //                                           width:
-                          //                                               120.0,
-                          //                                           height:
-                          //                                               40.0,
-                          //                                           padding: EdgeInsetsDirectional
-                          //                                               .fromSTEB(
-                          //                                                   24.0,
-                          //                                                   0.0,
-                          //                                                   24.0,
-                          //                                                   0.0),
-                          //                                           iconPadding:
-                          //                                               EdgeInsetsDirectional.fromSTEB(
-                          //                                                   0.0,
-                          //                                                   0.0,
-                          //                                                   0.0,
-                          //                                                   0.0),
-                          //                                           color: FlutterTheme.of(
-                          //                                                   context)
-                          //                                               .secondary,
-                          //                                           textStyle: FlutterTheme.of(
-                          //                                                   context)
-                          //                                               .titleSmall
-                          //                                               .override(
-                          //                                                 fontFamily:
-                          //                                                     'Urbanist',
-                          //                                                 color:
-                          //                                                     Colors.white,
-                          //                                               ),
-                          //                                           elevation:
-                          //                                               3.0,
-                          //                                           borderSide:
-                          //                                               BorderSide(
-                          //                                             color: Colors
-                          //                                                 .transparent,
-                          //                                             width:
-                          //                                                 1.0,
-                          //                                           ),
-                          //                                           borderRadius:
-                          //                                               BorderRadius
-                          //                                                   .only(
-                          //                                             bottomLeft:
-                          //                                                 Radius.circular(
-                          //                                                     0.0),
-                          //                                             bottomRight:
-                          //                                                 Radius.circular(
-                          //                                                     16.0),
-                          //                                             topLeft: Radius
-                          //                                                 .circular(
-                          //                                                     16.0),
-                          //                                             topRight:
-                          //                                                 Radius.circular(
-                          //                                                     0.0),
-                          //                                           ),
-                          //                                         ),
-                          //                                       ),
-                          //                                     ),
-                          //                                   ],
-                          //                                 ),
-                          //                               ].divide(SizedBox(
-                          //                                   height: 8.0)),
-                          //                             ),
-                          //                           ),
-                          //                         ].divide(
-                          //                             SizedBox(width: 12.0)),
-                          //                       ),
-                          //                     ),
-                          //                   );
-                          //                 },
-                          //               );
-                          //             },
-                          //           );
-                          //         } else {
-                          //           return Align(
-                          //             alignment:
-                          //                 AlignmentDirectional(0.00, 0.00),
-                          //             child: Text(
-                          //               FFLocalizations.of(context).getText(
-                          //                 'cwi7jaad' /* No Booking Available ! */,
-                          //               ),
-                          //               style:
-                          //                   FlutterTheme.of(context).bodyMedium,
-                          //             ),
-                          //           );
-                          //         }
-                          //       },
-                          //     );
-                          //   },
-                          // ),
                         ],
                       ),
                     ),
@@ -3168,7 +2473,6 @@ class _YourCurrentBookingPageWidgetState
   }
 
   Future<void> historycurrentBooking() async {
-
     print("<=============historycurrentBooking== hello===========>");
 
     SessionHelper session = await SessionHelper.getInstance(context);
@@ -3194,46 +2498,39 @@ class _YourCurrentBookingPageWidgetState
           if (model.response == true) {
             print("Model status true");
             setProgress(false);
-            _hasData = false;
-
             setState(() {
               _historyBooking = model;
+              _hasData = model.data == null || model.data!.isEmpty;
             });
-
             print("successs==============");
-            // ScaffoldMessenger.of(context).showSnackBar(
-            //   SnackBar(
-            //     content: Text(model.message.toString()),
-            //   ),
-            // );
           } else {
             setProgress(false);
-            _hasData = false;
+            setState(() {
+              _hasData = false;
+            });
             print("false ### ============>");
-
-            // context.pushNamed('RegisterCrozerVehicalPage');
-
-            // ScaffoldMessenger.of(context).showSnackBar(
-            //   SnackBar(
-            //     content: Text(model.message.toString()),
-            //   ),
-            // );
-            // ToastMessage.msg(model.message.toString());
           }
         } catch (e) {
           print("false ============>");
-          //ToastMessage.msg(StaticMessages.API_ERROR);
+          setProgress(false);
+          setState(() {
+            _hasData = false;
+          });
           print('exception ==> ' + e.toString());
         }
       } else {
         print("status code ==> " + res.statusCode.toString());
-        //  ToastMessage.msg(StaticMessages.API_ERROR);
+        setProgress(false);
+        setState(() {
+          _hasData = false;
+        });
       }
     } catch (e) {
-      //  ToastMessage.msg(StaticMessages.API_ERROR);
       print('Exception ======> ' + e.toString());
+      setProgress(false);
+      setState(() {
+        _hasData = false;
+      });
     }
-    setProgress(false);
-    _hasData = false;
   }
 }

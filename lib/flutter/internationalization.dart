@@ -3026,5 +3026,77 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Agregar Lista',
       'ar': 'إضافة قائمة',
     },
+    'booking': {
+      'en': 'Booking',
+      'pt': 'Reservas',
+      'es': 'Reservas',
+      'ar': 'الحجوزات',
+    },
+    'current_booking': {
+      'en': 'Current Booking',
+      'pt': 'Reserva Atual',
+      'es': 'Reserva Actual',
+      'ar': 'الحجز الحالي',
+    },
+    'booking_history': {
+      'en': 'History',
+      'pt': 'Histórico',
+      'es': 'Historial',
+      'ar': 'السجل',
+    },
+  },
+  {
+    'booking_success_title': {
+      'en': 'Booking Successfully',
+      'pt': 'Reserva Realizada com Sucesso',
+      'es': 'Reserva Exitosa',
+      'ar': 'تم الحجز بنجاح',
+    },
+    'booking_success_message': {
+      'en': 'You\'ve booked car successfully. Go to My booking for more booking detail.',
+      'pt': 'Você reservou o carro com sucesso. Vá para Minhas Reservas para mais detalhes.',
+      'es': 'Has reservado el coche con éxito. Ve a Mis Reservas para más detalles.',
+      'ar': 'لقد قمت بحجز السيارة بنجاح. اذهب إلى حجوزاتي لمزيد من التفاصيل.',
+    },
+  },
+  {
+    'total_label': {
+      'en': 'Total Amount',
+      'pt': 'Total',
+      'es': 'Total',
+      'ar': 'المجموع',
+    },
+  },
+  {
+    'booking_status_open': {
+      'en': 'Open',
+      'pt': 'Aberto',
+      'es': 'Abierto',
+      'ar': 'مفتوح'
+    },
+    'booking_status_accepted': {
+      'en': 'Accepted',
+      'pt': 'Aceito',
+      'es': 'Aceptado',
+      'ar': 'مقبول'
+    },
+    'booking_status_picked_up': {
+      'en': 'Car Picked up on Road',
+      'pt': 'Carro Retirado na Estrada',
+      'es': 'Coche Recogido en la Carretera',
+      'ar': 'تم استلام السيارة على الطريق'
+    },
+    'booking_status_delivered': {
+      'en': 'Delivered',
+      'pt': 'Entregue',
+      'es': 'Entregado',
+      'ar': 'تم التسليم'
+    },
+    'booking_status_cancelled': {
+      'en': 'Cancelled',
+      'pt': 'Cancelado',
+      'es': 'Cancelado',
+      'ar': 'ملغي'
+    },
   },
 ].reduce((a, b) => a..addAll(b));

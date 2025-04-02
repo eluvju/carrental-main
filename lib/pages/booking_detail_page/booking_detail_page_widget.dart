@@ -2028,12 +2028,12 @@ class _BookingDetailPageWidgetState extends State<BookingDetailPageWidget> {
                                                     .jsonBody,
                                               )
                                                   .toString()  == "1")
-                                                  ? "Open"
+                                                  ? FFLocalizations.of(context).getText('booking_status_open')
                                                   : (BaseUrlGroup.bookingdetailCall.status(bookingDetailPageBookingdetailResponse.jsonBody,).toString()  == "2")
-                                                  ? "Accepted"
+                                                  ? FFLocalizations.of(context).getText('booking_status_accepted')
                                                   : (BaseUrlGroup.bookingdetailCall.status(bookingDetailPageBookingdetailResponse.jsonBody,).toString()  == "3")
-                                                  ? "Car Picked up on Road"
-                                                  : "Delivered",
+                                                  ? FFLocalizations.of(context).getText('booking_status_picked_up')
+                                                  : FFLocalizations.of(context).getText('booking_status_delivered'),
                                               style: FlutterTheme.of(
                                                   context)
                                                   .bodyMedium
