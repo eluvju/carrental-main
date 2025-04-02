@@ -185,13 +185,13 @@ class _MoreFilterPageWidgetState extends State<MoreFilterPageWidget> {
                                         width: 10,
                                       ),
                                       Text(
-                                        "Pickup Location",
+                                        FFLocalizations.of(context).getText('pickup_location'),
                                         style: TextStyle(
                                           fontFamily: 'SFProDisplay',
                                           fontSize: 17,
                                           color: Color(0xff0D0C0F),
-                                          fontWeight: FontWeight.w400, // Adjust the fontWeight as needed
-                                          fontStyle: FontStyle.normal, // Adjust the fontStyle as needed
+                                          fontWeight: FontWeight.w400,
+                                          fontStyle: FontStyle.normal,
                                         ),
                                       ),
                                     ],
@@ -225,7 +225,7 @@ class _MoreFilterPageWidgetState extends State<MoreFilterPageWidget> {
                                             },
                                             obscureText: false,
                                             decoration: InputDecoration(
-                                              hintText: 'Pickup location',
+                                              hintText: FFLocalizations.of(context).getText('pickup_location'),
                                               hintStyle: FlutterTheme.of(context).displaySmall.override(
                                                 fontFamily: FlutterTheme.of(context).displaySmallFamily,
                                                 color: Color(0XFF0D0C0F),
@@ -293,7 +293,7 @@ class _MoreFilterPageWidgetState extends State<MoreFilterPageWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Cars Category",
+                                FFLocalizations.of(context).getText('cars_category'),
                                 style: TextStyle(
                                   fontFamily: 'SFProDisplay',
                                   fontSize: 17,
@@ -607,7 +607,7 @@ class _MoreFilterPageWidgetState extends State<MoreFilterPageWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Price",
+                                  FFLocalizations.of(context).getText('price'),
                                   style: FlutterTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -645,7 +645,7 @@ class _MoreFilterPageWidgetState extends State<MoreFilterPageWidget> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text('Starting price: ${_values.start.toStringAsFixed(2)}',
+                                    Text('${FFLocalizations.of(context).getText('starting_price')}: ${_values.start.toStringAsFixed(2)}',
                                       style: FlutterTheme.of(context)
                                           .displaySmall
                                           .override(
@@ -662,7 +662,7 @@ class _MoreFilterPageWidgetState extends State<MoreFilterPageWidget> {
                                                 .displaySmallFamily),
                                       ),
                                     ),
-                                    Text('Ending price: ${_values.end.toStringAsFixed(2)}',
+                                    Text('${FFLocalizations.of(context).getText('ending_price')}: ${_values.end.toStringAsFixed(2)}',
                                       style: FlutterTheme.of(context)
                                           .displaySmall
                                           .override(
@@ -798,7 +798,7 @@ class _MoreFilterPageWidgetState extends State<MoreFilterPageWidget> {
 
                                       });
                                     },
-                                    text: "For the day",
+                                    text: FFLocalizations.of(context).getText('for_the_day'),
                                     options: FFButtonOptions(
                                       width: MediaQuery.of(context).size.width / 2.3,
                                       height: 46.0,
@@ -831,7 +831,7 @@ class _MoreFilterPageWidgetState extends State<MoreFilterPageWidget> {
                                         endTime=null;
                                       });
                                     },
-                                    text: "For the hour",
+                                    text: FFLocalizations.of(context).getText('for_the_hour'),
                                     options: FFButtonOptions(
                                       width: MediaQuery.of(context).size.width / 2.3,
                                       height: 46.0,
@@ -1687,7 +1687,7 @@ class _MoreFilterPageWidgetState extends State<MoreFilterPageWidget> {
                                 //
                                 // setState(() {});
                               },
-                              text: "Find Cars",
+                              text: FFLocalizations.of(context).getText('find_cars'),
                               options: FFButtonOptions(
                                 height: 48.0,
                                 padding: EdgeInsetsDirectional.fromSTEB(

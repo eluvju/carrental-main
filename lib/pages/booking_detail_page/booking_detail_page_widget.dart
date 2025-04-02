@@ -1169,10 +1169,8 @@ class _BookingDetailPageWidgetState extends State<BookingDetailPageWidget> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Car Details",textAlign: TextAlign.start,
-                                      style: FlutterTheme.of(context).titleSmall.override(
-                                        fontFamily: 'Urbanist',fontSize: 16,fontWeight: FontWeight.w500,
-                                      ),
+                                      FFLocalizations.of(context).getText('car_details'),
+                                      textAlign: TextAlign.start,
                                     ),
                                     GestureDetector(
                                       onTap: () {
@@ -1181,7 +1179,7 @@ class _BookingDetailPageWidgetState extends State<BookingDetailPageWidget> {
                                         });
                                       },
                                       child: Text(
-                                        isExpanded ? "View Less" : "View More",
+                                        isExpanded ? FFLocalizations.of(context).getText('view_less') : FFLocalizations.of(context).getText('view_more'),
                                         textAlign: TextAlign.start,
                                         style: Theme.of(context).textTheme.titleSmall?.copyWith(
                                           fontFamily: 'Urbanist',
@@ -1198,10 +1196,8 @@ class _BookingDetailPageWidgetState extends State<BookingDetailPageWidget> {
                                     Row(
                                       children: [
                                         Text(
-                                          "Descriptions",textAlign: TextAlign.start,
-                                          style: FlutterTheme.of(context).titleSmall.override(
-                                            fontFamily: 'Urbanist',fontSize: 16,fontWeight: FontWeight.w500,
-                                          ),
+                                          FFLocalizations.of(context).getText('descriptions'),
+                                          textAlign: TextAlign.start,
                                         ),
                                       ],
                                     ),
@@ -1260,7 +1256,7 @@ class _BookingDetailPageWidgetState extends State<BookingDetailPageWidget> {
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              "Automatic transmission  ",
+                                              FFLocalizations.of(context).getText('automatic_transmission'),
                                               // FFLocalizations.of(context).getText(
                                               //   'y90sqru4' /* Automatic transmission: Yes */,
                                               // ),
@@ -1295,7 +1291,7 @@ class _BookingDetailPageWidgetState extends State<BookingDetailPageWidget> {
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              "Air bags  ",
+                                              FFLocalizations.of(context).getText('air_bags'),
                                               style: FlutterTheme.of(context)
                                                   .bodyMedium
                                                   .override(
@@ -1327,7 +1323,7 @@ class _BookingDetailPageWidgetState extends State<BookingDetailPageWidget> {
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              "Safety rating : ",
+                                              FFLocalizations.of(context).getText('safety_rating'),
                                               style: FlutterTheme.of(context)
                                                   .bodyMedium
                                                   .override(
@@ -1359,7 +1355,7 @@ class _BookingDetailPageWidgetState extends State<BookingDetailPageWidget> {
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              "Seats ",
+                                              FFLocalizations.of(context).getText('seats'),
                                               style: FlutterTheme.of(context)
                                                   .bodyMedium
                                                   .override(
@@ -1391,7 +1387,7 @@ class _BookingDetailPageWidgetState extends State<BookingDetailPageWidget> {
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              "Specification ",
+                                              FFLocalizations.of(context).getText('specification'),
                                               style: FlutterTheme.of(context)
                                                   .bodyMedium
                                                   .override(
@@ -1539,7 +1535,7 @@ class _BookingDetailPageWidgetState extends State<BookingDetailPageWidget> {
                                       color:Color(0xff64748B3B) ,
                                     ),
                                     Text(
-                                      "Drop off Address",
+                                      FFLocalizations.of(context).getText('drop_off_address'),
                                       style:
                                       FlutterTheme.of(
                                           context)
@@ -1983,7 +1979,8 @@ class _BookingDetailPageWidgetState extends State<BookingDetailPageWidget> {
                                       CrossAxisAlignment.stretch,
                                   children: [
                                     Text(
-                                      "Booking Status",
+                                      FFLocalizations.of(context).getText(
+                                        'booking_status'),
                                       // FFLocalizations.of(context).getText(
                                       //   'yfakuji7' /* Rental  Amount */,
                                       // ),
@@ -2060,7 +2057,7 @@ class _BookingDetailPageWidgetState extends State<BookingDetailPageWidget> {
                                           children: [
                                             Expanded(
                                               child: Text(
-                                                "Rate Car",
+                                                FFLocalizations.of(context).getText('rate_car'),
                                                 style: FlutterTheme.of(context)
                                                     .bodyMedium
                                                     .override(

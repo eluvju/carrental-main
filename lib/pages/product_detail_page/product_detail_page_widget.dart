@@ -169,10 +169,8 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                 child: Image.asset('assets/images/back_icon_with_bg.png',height: 30,width: 30,),
               ),
             ),
-            title: Text("Car Details",
-              // FFLocalizations.of(context).getText(
-              //   'p6r3ar1p' /* More Filter */,
-              // ),
+            title: Text(
+              FFLocalizations.of(context).getText('car_details'),
               style: FlutterTheme.of(context).headlineMedium.override(
                   fontFamily: 'Urbanist',
                   color: FlutterTheme.of(context).primaryText,
@@ -685,7 +683,8 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                       padding: const EdgeInsets.symmetric(horizontal: 2.0,vertical: 0),
                                       child: Center(
                                         child: Text(
-                                          "Available now", style: FlutterTheme.of(context).titleSmall.override(
+                                          FFLocalizations.of(context).getText('available_now'),
+                                          style: FlutterTheme.of(context).titleSmall.override(
                                             fontFamily: 'Urbanist',
                                             color: Color(0xff4ADB06),fontSize: 12
                                         ),
@@ -743,10 +742,11 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    _carDetailsModel!.data!.carName!
-                                        .toString(), style: FlutterTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Urbanist',fontSize: 14,fontWeight: FontWeight.w400,
+                                    FFLocalizations.of(context).getText('owned_by'),
+                                    style: FlutterTheme.of(context).titleSmall.override(
+                                    fontFamily: 'Urbanist',
                                     color: Color(0xff7C8BA0),
+                                    fontSize: 14,
                                   ),
                                   ),
                                   SizedBox(
@@ -765,18 +765,18 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                               Row(
                                 children: [
                                   Text(
-                                    "\$${  _carDetailsModel!.data!.carCost!
-                                        .toString()}", style: FlutterTheme.of(context).titleSmall.override(
+                                    "${FFLocalizations.of(context).getText('car_cost')}${_carDetailsModel!.data!.carCost!.toString()}", 
+                                    style: FlutterTheme.of(context).titleSmall.override(
                                       fontFamily: 'Urbanist',
-                                      color: Color(0xff0D0C0F),fontSize: 16
-                                  ),
+                                      color: Color(0xff0D0C0F),
+                                      fontSize: 16
+                                    ),
                                   ),
                                   Text(
-                                    "/${    _carDetailsModel!.data!.priceType!
-                                        .toString()}",
-
+                                    "/${_carDetailsModel!.data!.priceType!.toString()}",
                                     style: FlutterTheme.of(context).titleSmall.override(
-                                      fontFamily: 'Urbanist',fontSize: 12,
+                                      fontFamily: 'Urbanist',
+                                      fontSize: 12,
                                       color: Color(0xff7C8BA0),
                                     ),
                                   ),
@@ -789,9 +789,11 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Owner Details",textAlign: TextAlign.start,
+                                FFLocalizations.of(context).getText('car_location'),
                                 style: FlutterTheme.of(context).titleSmall.override(
-                                  fontFamily: 'Urbanist',fontSize: 16,fontWeight: FontWeight.w500,
+                                  fontFamily: 'Urbanist',
+                                  color: Color(0xFF7C8BA0),
+                                  fontSize: 14,
                                 ),
                               ),
                               SizedBox(
@@ -816,7 +818,7 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            "Owned by",
+                                            FFLocalizations.of(context).getText('owned_by'),
                                             style: FlutterTheme.of(context).titleSmall.override(
                                               fontFamily: 'Urbanist',fontSize: 14,fontWeight: FontWeight.w400,
                                               color: Color(0xff7C8BA0),
@@ -852,7 +854,7 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                   height: 10,
                                 ),
                                 Text(
-                                  "Car Location",textAlign: TextAlign.start,
+                                  FFLocalizations.of(context).getText('car_location'),
                                   style: FlutterTheme.of(context).titleSmall.override(
                                     fontFamily: 'Urbanist',fontSize: 16,fontWeight: FontWeight.w500,
                                   ),
@@ -957,7 +959,7 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      "Car Details",textAlign: TextAlign.start,
+                                      FFLocalizations.of(context).getText('descriptions'),
                                       style: FlutterTheme.of(context).titleSmall.override(
                                         fontFamily: 'Urbanist',fontSize: 16,fontWeight: FontWeight.w500,
                                       ),
@@ -1007,7 +1009,7 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                     Row(
                                       children: [
                                         Text(
-                                          "Descriptions",textAlign: TextAlign.start,
+                                          FFLocalizations.of(context).getText('descriptions'),
                                           style: FlutterTheme.of(context).titleSmall.override(
                                             fontFamily: 'Urbanist',fontSize: 16,fontWeight: FontWeight.w500,
                                           ),
@@ -1049,9 +1051,7 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            FFLocalizations.of(context).getText(
-                                              'hv7ydtqz' /* Features */,
-                                            ),
+                                            FFLocalizations.of(context).getText('features'),
                                             style: FlutterTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -1067,10 +1067,7 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                "Automatic transmission  ",
-                                                // FFLocalizations.of(context).getText(
-                                                //   'y90sqru4' /* Automatic transmission: Yes */,
-                                                // ),
+                                                FFLocalizations.of(context).getText('automatic_transmission'),
                                                 style: FlutterTheme.of(context)
                                                     .bodyMedium
                                                     .override(
@@ -1080,8 +1077,9 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                               ),
                                               Text(
                                                 _carDetailsModel!.data!.automaticTransmission!
-
-                                                    .toString(),
+                                                    .toString() == "1" 
+                                                  ? FFLocalizations.of(context).getText('automatic_transmission_yes')
+                                                  : FFLocalizations.of(context).getText('automatic_transmission_no'),
                                                 style: FlutterTheme.of(context)
                                                     .bodyMedium
                                                     .override(
@@ -1099,10 +1097,7 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                "Car Color  ",
-                                                // FFLocalizations.of(context).getText(
-                                                //   'y90sqru4' /* Automatic transmission: Yes */,
-                                                // ),
+                                                FFLocalizations.of(context).getText('car_color'),
                                                 style: FlutterTheme.of(context)
                                                     .bodyMedium
                                                     .override(
@@ -1131,10 +1126,7 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                "Vehicle Number  ",
-                                                // FFLocalizations.of(context).getText(
-                                                //   'y90sqru4' /* Automatic transmission: Yes */,
-                                                // ),
+                                                FFLocalizations.of(context).getText('vehicle_number'),
                                                 style: FlutterTheme.of(context)
                                                     .bodyMedium
                                                     .override(
@@ -1163,7 +1155,7 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                "Air bags  ",
+                                                FFLocalizations.of(context).getText('air_bags'),
                                                 style: FlutterTheme.of(context)
                                                     .bodyMedium
                                                     .override(
@@ -1191,7 +1183,7 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                "Vehicle Category ",
+                                                FFLocalizations.of(context).getText('vehicle_category'),
                                                 style: FlutterTheme.of(context)
                                                     .bodyMedium
                                                     .override(
@@ -1219,7 +1211,7 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                "Safety rating : ",
+                                                FFLocalizations.of(context).getText('safety_rating'),
                                                 style: FlutterTheme.of(context)
                                                     .bodyMedium
                                                     .override(
@@ -1247,7 +1239,7 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                "Seats ",
+                                                FFLocalizations.of(context).getText('seats'),
                                                 style: FlutterTheme.of(context)
                                                     .bodyMedium
                                                     .override(
@@ -1275,7 +1267,7 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                "Specification ",
+                                                FFLocalizations.of(context).getText('specification'),
                                                 style: FlutterTheme.of(context)
                                                     .bodyMedium
                                                     .override(
@@ -1863,9 +1855,7 @@ class _ProductDetailPageWidgetState extends State<ProductDetailPageWidget> {
                                         child: Align(
                                           alignment: AlignmentDirectional(0.00, 0.00),
                                           child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              '30q5685b' /* Rent It */,
-                                            ),
+                                            FFLocalizations.of(context).getText('rent_it'),
                                             style: FlutterTheme.of(context).labelLarge.override(
                                               fontFamily: 'Urbanist',
                                               color: Colors.white,

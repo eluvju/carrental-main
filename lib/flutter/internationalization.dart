@@ -3012,12 +3012,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Coches Guardados',
       'ar': 'السيارات المحفوظة',
     },
-    'no_data': {
-      'en': 'No Data',
-      'pt': 'Sem Carros Salvos',
-      'es': 'Sin Datos',
-      'ar': 'لا توجد بيانات',
-    },
   },
   {
     'add_list': {
@@ -3099,4 +3093,236 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'ملغي'
     },
   },
+  {
+    'car_details': {
+      'en': 'Car Details',
+      'pt': 'Detalhes do Carro',
+      'es': 'Detalles del Coche',
+      'ar': 'تفاصيل السيارة'
+    }
+  },
+  {
+    'view_more': {
+      'en': 'View More',
+      'pt': 'Ver Mais',
+      'es': 'Ver Más',
+      'ar': 'عرض المزيد'
+    }
+  },
+  {
+    'view_less': {
+      'en': 'View Less',
+      'pt': 'Ver Menos',
+      'es': 'Ver Menos',
+      'ar': 'عرض أقل'
+    }
+  },
+  {
+    'descriptions': {
+      'en': 'Descriptions',
+      'pt': 'Descrições',
+      'es': 'Descripciones',
+      'ar': 'الوصف'
+    }
+  },
+  {
+    'automatic_transmission': {
+      'en': 'Automatic Transmission',
+      'pt': 'Transmissão Automática',
+      'es': 'Transmisión Automática',
+      'ar': 'ناقل حركة أوتوماتيكي'
+    }
+  },
+  {
+    'air_bags': {
+      'en': 'Air Bags',
+      'pt': 'Airbags',
+      'es': 'Airbags',
+      'ar': 'وسائد هوائية'
+    }
+  },
+  {
+    'safety': {
+      'en': 'Safety rating - 5 star in global NCAP ',
+      'ar': 'تصنيف السلامة - 5 نجوم في NCAP العالمي',
+      'es': 'Calificación de seguridad: 5 estrellas en NCAP global',
+      'pt': 'Classificação de segurança - 5 estrelas no NCAP global',
+    }
+  },
+  {
+    'seats': {
+      'en': 'Seats',
+      'pt': 'Assentos',
+      'es': 'Asientos',
+      'ar': 'المقاعد'
+    }
+  },
+  {
+    'specification': {
+      'en': 'Specification',
+      'pt': 'Especificação',
+      'es': 'Especificación',
+      'ar': 'المواصفات'
+    }
+  },
+  {
+    'drop_off_address': {
+      'en': 'Drop off Address',
+      'pt': 'Endereço de Entrega',
+      'es': 'Dirección de Entrega',
+      'ar': 'عنوان التسليم'
+    }
+  },
+  {
+    'booking_status': {
+      'en': 'Booking Status',
+      'pt': 'Status da Reserva',
+      'es': 'Estado de la Reserva',
+      'ar': 'حالة الحجز'
+    }
+  },
+  {
+    'rate_car': {
+      'en': 'Rate Car',
+      'pt': 'Avaliar Carro',
+      'es': 'Calificar Coche',
+      'ar': 'تقييم السيارة'
+    },
+    'owned_by': {
+      'en': 'Owned By',
+      'pt': 'Proprietário',
+      'es': 'Propietario',
+      'ar': 'يمتلكها'
+    },
+    'car_location': {
+      'en': 'Car Location',
+      'pt': 'Localização do Carro',
+      'es': 'Ubicación del Coche',
+      'ar': 'موقع السيارة'
+    },
+    'rent_it': {
+      'en': 'Rent It',
+      'pt': 'Alugar',
+      'es': 'Alquilar',
+      'ar': 'استأجرها'
+    },
+    'car_cost': {
+      'en': '\$',
+      'pt': 'R\$',
+      'es': '\$',
+      'ar': '\$'
+    },
+    'automatic_transmission_yes': {
+      'en': 'Yes',
+      'pt': 'Sim',
+      'es': 'Sí',
+      'ar': 'نعم'
+    },
+    'automatic_transmission_no': {
+      'en': 'No',
+      'pt': 'Não',
+      'es': 'No',
+      'ar': 'لا'
+    },
+    'car_color': {
+      'en': 'Car Color',
+      'pt': 'Cor do Carro',
+      'es': 'Color del Coche',
+      'ar': 'لون السيارة'
+    },
+    'vehicle_number': {
+      'en': 'Vehicle Number',
+      'pt': 'Número do Veículo',
+      'es': 'Número de Vehículo',
+      'ar': 'رقم السيارة'
+    },
+    'vehicle_category': {
+      'en': 'Vehicle Category',
+      'pt': 'Categoria do Veículo',
+      'es': 'Categoría del Vehículo',
+      'ar': 'فئة السيارة'
+    },
+    'safety_rating': {
+      'en': 'Safety Rating',
+      'pt': 'Classificação de Segurança',
+      'es': 'Calificación de Seguridad',
+      'ar': 'تصنيف السلامة'
+    },
+    'seats': {
+      'en': 'Seats',
+      'pt': 'Assentos',
+      'es': 'Asientos',
+      'ar': 'المقاعد'
+    },
+    'specification': {
+      'en': 'Specification',
+      'pt': 'Especificação',
+      'es': 'Especificación',
+      'ar': 'المواصفات'
+    }
+  },
+  {
+    'pickup_location': {
+      'en': 'Pickup Location',
+      'pt': 'Local de Retirada',
+      'es': 'Ubicación de Recogida',
+      'ar': 'موقع الاستلام'
+    }
+  },
+  {
+    'cars_category': {
+      'en': 'Cars Category',
+      'pt': 'Categoria de Carros',
+      'es': 'Categoría de Coches',
+      'ar': 'فئة السيارات'
+    }
+  },
+  {
+    'price': {
+      'en': 'Price',
+      'pt': 'Preço',
+      'es': 'Precio',
+      'ar': 'السعر'
+    }
+  },
+  {
+    'starting_price': {
+      'en': 'Starting Price',
+      'pt': 'Preço Inicial',
+      'es': 'Precio Inicial',
+      'ar': 'السعر الأولي'
+    }
+  },
+  {
+    'ending_price': {
+      'en': 'Ending Price',
+      'pt': 'Preço Final',
+      'es': 'Precio Final',
+      'ar': 'السعر النهائي'
+    }
+  },
+  {
+    'for_the_day': {
+      'en': 'For the Day',
+      'pt': 'Por Dia',
+      'es': 'Por Día',
+      'ar': 'لليوم'
+    }
+  },
+  {
+    'for_the_hour': {
+      'en': 'For the Hour',
+      'pt': 'Por Hora',
+      'es': 'Por Hora',
+      'ar': 'للساعة'
+    }
+  },
+  {
+    'find_cars': {
+      'en': 'Find Cars',
+      'pt': 'Encontrar Carros',
+      'es': 'Encontrar Coches',
+      'ar': 'البحث عن السيارات'
+    }
+  }
 ].reduce((a, b) => a..addAll(b));
