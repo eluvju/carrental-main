@@ -70,10 +70,8 @@ class _PromoCodeDetailPageWidgetState extends State<PromoCodeDetailPageWidget> {
               child: Image.asset('assets/images/back_icon_with_bg.png',height: 30,width: 30,),
             ),
           ),
-          title: Text("Promocode Detail",
-            // FFLocalizations.of(context).getText(
-            //   'p6r3ar1p' /* More Filter */,
-            // ),
+          title: Text(
+            FFLocalizations.of(context).getText('promocode_detail'),
             style: FlutterTheme.of(context).headlineMedium.override(
                 fontFamily: 'Urbanist',
                 color: FlutterTheme.of(context).primaryText,
@@ -134,7 +132,7 @@ class _PromoCodeDetailPageWidgetState extends State<PromoCodeDetailPageWidget> {
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
                                   Text(
-                                    widget.title,
+                                    FFLocalizations.of(context).getText('limited_offer'),
                                     textAlign: TextAlign.start,
                                     style: FlutterTheme.of(context)
                                         .headlineLarge
@@ -203,11 +201,11 @@ class _PromoCodeDetailPageWidgetState extends State<PromoCodeDetailPageWidget> {
                                         onTap: () {
                                           Clipboard.setData(ClipboardData(text: widget.coupon));
                                           ScaffoldMessenger.of(context).showSnackBar(
-                                            SnackBar(content: Text(
-                                              FFLocalizations.of(context).getText(
-                                                'coupon_copied' /* Coupon code copied to clipboard */,
+                                            SnackBar(
+                                              content: Text(
+                                                FFLocalizations.of(context).getText('coupon_copied'),
                                               ),
-                                            )),
+                                            ),
                                           );
                                         },
                                         child: Icon(
@@ -220,11 +218,11 @@ class _PromoCodeDetailPageWidgetState extends State<PromoCodeDetailPageWidget> {
                                         onTap: () {
                                           Clipboard.setData(ClipboardData(text: widget.coupon));
                                           ScaffoldMessenger.of(context).showSnackBar(
-                                            SnackBar(content: Text(
-                                              FFLocalizations.of(context).getText(
-                                                'coupon_copied' /* Coupon code copied to clipboard */,
+                                            SnackBar(
+                                              content: Text(
+                                                FFLocalizations.of(context).getText('coupon_copied'),
                                               ),
-                                            )),
+                                            ),
                                           );
                                         },
                                         child: Text(
