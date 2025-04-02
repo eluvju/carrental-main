@@ -130,7 +130,7 @@ class _YourFavouriteListPageWidgetState
               //   ),
               // ),
               title: Text(
-               "Saved Cars",
+               FFLocalizations.of(context).getText('saved_cars'),
                 style: FlutterTheme.of(context).headlineMedium.override(
                     fontFamily: 'Urbanist',
                     color: FlutterTheme.of(context).primaryText,
@@ -148,7 +148,7 @@ class _YourFavouriteListPageWidgetState
                   ? Container()
                   : Container(
                 child: Center(
-                  child: Text("NO DATA"),
+                  child: Text(FFLocalizations.of(context).getText('no_data')),
                 ),
               )
                   : ListView.builder(
@@ -295,7 +295,7 @@ class _YourFavouriteListPageWidgetState
                                             vertical: 0),
                                         child: Center(
                                           child: Text(
-                                            "Available now",
+                                            FFLocalizations.of(context).getText('available_now'),
                                             style: FlutterTheme
                                                 .of(
                                                 context)
@@ -492,31 +492,21 @@ class _YourFavouriteListPageWidgetState
                                 Row(
                                   children: [
                                     Text(
-                                      "\$${_favListModel!.data![item].carCost.toString()}",
-                                      style: FlutterTheme.of(
-                                          context)
-                                          .titleSmall
-                                          .override(
-                                          fontFamily:
-                                          'Urbanist',
-                                          color: Color(
-                                              0xff0D0C0F),
-                                          fontSize: 16),
+                                      "${FFLocalizations.of(context).getText('currency_symbol')}${_favListModel!.data![item].carCost.toString()}",
+                                      style: FlutterTheme.of(context).titleSmall.override(
+                                        fontFamily: 'Urbanist',
+                                        color: Color(0xff0D0C0F),
+                                        fontSize: 16
+                                      ),
                                     ),
                                     Text(
-                                      _favListModel!
-                                          .data![item]
-                                          .priceType
-                                          .toString(),
-                                      style: FlutterTheme.of(
-                                          context)
-                                          .titleSmall
-                                          .override(
-                                        fontFamily:
-                                        'Urbanist',
+                                      FFLocalizations.of(context).getText(
+                                        getPriceTypeTranslationKey(_favListModel!.data![item].priceType.toString()),
+                                      ),
+                                      style: FlutterTheme.of(context).titleSmall.override(
+                                        fontFamily: 'Urbanist',
                                         fontSize: 12,
-                                        color: Color(
-                                            0xff7C8BA0),
+                                        color: Color(0xff7C8BA0),
                                       ),
                                     ),
                                   ],
@@ -595,19 +585,12 @@ class _YourFavouriteListPageWidgetState
                                       width: 8.8,
                                     ),
                                     Text(
-                                      "${_favListModel!.data![item].carSeat.toString()} Seater",
-                                      style: FlutterTheme.of(
-                                          context)
-                                          .titleSmall
-                                          .override(
-                                        fontFamily:
-                                        'Urbanist',
+                                      "${_favListModel!.data![item].carSeat.toString()} ${FFLocalizations.of(context).getText('seater')}",
+                                      style: FlutterTheme.of(context).titleSmall.override(
+                                        fontFamily: 'Urbanist',
                                         fontSize: 14,
-                                        fontWeight:
-                                        FontWeight
-                                            .w400,
-                                        color: Color(
-                                            0xff7C8BA0),
+                                        fontWeight: FontWeight.w400,
+                                        color: Color(0xff7C8BA0),
                                       ),
                                     ),
                                   ],
@@ -1278,5 +1261,20 @@ class _YourFavouriteListPageWidgetState
     }
     setProgress(false);
     _hasData=false;
+  }
+
+  String getPriceTypeTranslationKey(String priceType) {
+    switch (priceType.toLowerCase()) {
+      case 'day':
+        return 'price_type_day';
+      case 'week':
+        return 'price_type_week';
+      case 'month':
+        return 'price_type_month';
+      case 'hourly':
+        return 'price_type_hourly';
+      default:
+        return 'price_type_day';
+    }
   }
 }

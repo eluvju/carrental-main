@@ -3006,6 +3006,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Importe del cupón',
       'pt': 'Valor do cupom',
     },
+    'saved_cars': {
+      'en': 'Saved Cars',
+      'pt': 'Carros Favoritos',
+      'es': 'Coches Guardados',
+      'ar': 'السيارات المحفوظة',
+    },
+    'no_data': {
+      'en': 'No Data',
+      'pt': 'Sem Carros Salvos',
+      'es': 'Sin Datos',
+      'ar': 'لا توجد بيانات',
+    },
   },
   {
     'add_list': {
