@@ -3400,10 +3400,28 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'total_days': {
       'en': 'Total Days',
-      'pt': 'Total de Dias',
+      'ar': 'إجمالي الأيام',
       'es': 'Total de Días',
-      'ar': 'إجمالي الأيام'
-    }
+      'pt': 'Total de Dias',
+    },
+    'days': {
+      'en': 'Days',
+      'ar': 'أيام',
+      'es': 'Días',
+      'pt': 'Dias',
+    },
+    'per_days': {
+      'en': 'Per Days',
+      'ar': 'لكل يوم',
+      'es': 'Por Día',
+      'pt': 'Por Dia',
+    },
+    'minimum_days': {
+      'en': 'Minimum Days: 2 Days',
+      'ar': 'الحد الأدنى للأيام: يومان',
+      'es': 'Días Mínimos: 2 Días',
+      'pt': 'Mínimo de Dias: 2 Dias',
+    },
   },
   {
     'total_amount': {

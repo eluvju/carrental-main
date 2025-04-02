@@ -2412,29 +2412,18 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                                                       ),
                                                 ),
                                                 Text(
-                                                  _model.daysAndHour!
-                                                      ? formatNumber(
-                                                          _model.totalDays,
-                                                          formatType:
-                                                              FormatType.decimal,
-                                                          decimalType: DecimalType
-                                                              .periodDecimal,
-                                                        )
-                                                      : formatNumber(
-                                                          _model.hoursAndMins,
-                                                          formatType:
-                                                              FormatType.decimal,
-                                                          decimalType: DecimalType
-                                                              .periodDecimal,
-                                                        ),
-                                                  style: FlutterTheme.of(
-                                                          context)
+                                                  "${FFLocalizations.of(context).getText('total_days')}: ${formatNumber(
+                                                    _model.totalDays,
+                                                    formatType: FormatType.decimal,
+                                                    decimalType: DecimalType.periodDecimal,
+                                                  )} ${FFLocalizations.of(context).getText('days')}",
+                                                  style: FlutterTheme.of(context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Urbanist',
-                                                    color: Color(0xff25212E),
-                                                    fontSize: 16.0,
-                                                    fontWeight: FontWeight.w400,
+                                                        color: Color(0xff25212E),
+                                                        fontSize: 16.0,
+                                                        fontWeight: FontWeight.w400,
                                                       ),
                                                 ),
                                                 Text(
@@ -2486,10 +2475,8 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                                                                       )
                                                                       .toString())
                                                           : 0.0,
-                                                      _model.daysAndHour!
-                                                          ? _model.totalDays
-                                                              ?.toDouble()
-                                                          : _model.hoursAndMins),
+                                                      _model.totalDays
+                                                          ?.toDouble()),
                                                   formatType: FormatType.decimal,
                                                   decimalType:
                                                       DecimalType.periodDecimal,
@@ -2585,11 +2572,7 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                                                 //       ),
                                                 // ),
                                                 Text(
-                                                    " Days",
-                                                  // FFLocalizations.of(context)
-                                                  //     .getText(
-                                                  //   'p5ik7die' /* days */,
-                                                  // ),
+                                                    " ${FFLocalizations.of(context).getText('days')}",
                                                   style: FlutterTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -2626,7 +2609,7 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                                                       ),
                                                  ),
                                                 Text(
-                                                 "Days",
+                                                 " ${FFLocalizations.of(context).getText('days')}",
                                                   style: FlutterTheme.of(
                                                       context)
                                                       .bodyMedium
@@ -2955,7 +2938,7 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                           "Coupon Amount",
+                                           FFLocalizations.of(context).getText('coupon_amount'),
                                             style: FlutterTheme.of(context)
                                                 .bodyMedium
                                                 .override(

@@ -58,7 +58,7 @@ class _VehicleListingPageWidgetState extends State<VehicleListingPageWidget> {
     // On page load action.
     SchedulerBinding.instance!.addPostFrameCallback((_) async {
       setState(() {
-        _model.carType = 'Days';
+        _model.carType = FFLocalizations.of(context).getText('days');
         _model.categoryName = 'All';
       });
       print("=======  _model.carType = 'Days'======${_model.carType}");
@@ -299,7 +299,7 @@ class _VehicleListingPageWidgetState extends State<VehicleListingPageWidget> {
                       FFButtonWidget(
                         onPressed: () async {
                           setState(() {
-                            _model.carType = 'Days';
+                            _model.carType = FFLocalizations.of(context).getText('days');
                             performSearchptype( _model.carType.toString());
                           });
                         },
@@ -314,7 +314,7 @@ class _VehicleListingPageWidgetState extends State<VehicleListingPageWidget> {
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: valueOrDefault<Color>(
-                            _model.carType == 'Days'
+                            _model.carType == FFLocalizations.of(context).getText('days')
                                 ? FlutterTheme.of(context).error
                                 : FlutterTheme.of(context).accent4,
                             FlutterTheme.of(context).error,
@@ -322,7 +322,7 @@ class _VehicleListingPageWidgetState extends State<VehicleListingPageWidget> {
                           textStyle:
                           FlutterTheme.of(context).titleSmall.override(
                             fontFamily: 'Urbanist',
-                            color: _model.carType == 'Days'
+                            color: _model.carType == FFLocalizations.of(context).getText('days')
                                 ? FlutterTheme.of(context)
                                 .primaryBtnText
                                 : FlutterTheme.of(context).primary,
@@ -826,7 +826,7 @@ class _VehicleListingPageWidgetState extends State<VehicleListingPageWidget> {
                       ].divide(SizedBox(height: 8.0)),
                     ),
                   ),
-                ].divide(SizedBox(width: 12.0)),
+                ],
               ),
             ),
           );

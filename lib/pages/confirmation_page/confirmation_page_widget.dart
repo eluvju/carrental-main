@@ -334,7 +334,8 @@ class _ConfirmationPageWidgetState extends State<ConfirmationPageWidget> {
                     Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment:
-                      CrossAxisAlignment.stretch,
+                      CrossAxisAlignment
+                              .stretch,
                       children: [
 
                         Column(
