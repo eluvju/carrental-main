@@ -76,7 +76,7 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
-        _model.daysAndHour = widget.priceType == 'Day' ? true : false;
+        _model.daysAndHour = widget.priceType == FFLocalizations.of(context).getText('price_type_day') ? true : false;
       });
       setState(() {
         _model.driverAmount = _model.radioButtonValue == 'Self' ? 0 : 50;
@@ -135,14 +135,13 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
               child: Image.asset('assets/images/back_icon_with_bg.png',height: 30,width: 30,),
             ),
           ),
-          title: Text("Booking",
-            // FFLocalizations.of(context).getText(
-            //   'p6r3ar1p' /* More Filter */,
-            // ),
+          title: Text(
+            FFLocalizations.of(context).getText('booking'),
             style: FlutterTheme.of(context).headlineMedium.override(
-                fontFamily: 'Urbanist',
-                color: FlutterTheme.of(context).primaryText,
-                fontSize: 18.0,fontWeight: FontWeight.w600
+              fontFamily: 'Urbanist',
+              color: FlutterTheme.of(context).primaryText,
+              fontSize: 18.0,
+              fontWeight: FontWeight.w600
             ),
           ),
           actions: [],
@@ -404,12 +403,11 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                       //   ),
                       // ),
                       Text(
-                        "Location",
-                        style: FlutterTheme.of(context)
-                            .bodyMedium
-                            .override(
-                            fontFamily: 'Urbanist',
-                            fontSize: 16,fontWeight: FontWeight.w500,color: Color(0xff0D0C0F)
+                        FFLocalizations.of(context).getText('location'),
+                        style: FlutterTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Urbanist',
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       SizedBox(
@@ -778,13 +776,11 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                         height: 10,
                       ),
                       Text(
-                        "Enter Your Details",
-                        style: FlutterTheme.of(context)
-                            .bodyMedium
-                            .override(
+                        FFLocalizations.of(context).getText('enter_details'),
+                        style: FlutterTheme.of(context).bodyMedium.override(
                           fontFamily: 'Urbanist',
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w500,
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       SizedBox(
@@ -2132,13 +2128,12 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                               Row(
                                 children: [
                                   Text(
-                                    "Exclusive Offers",
-                                    style: FlutterTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                      fontFamily: 'Urbanist',
+                                    FFLocalizations.of(context).getText('exclusive_offers'),
+                                    style: FlutterTheme.of(context).bodyMedium.override(
+                                      fontFamily: 'Readex Pro',
+                                      color: FlutterTheme.of(context).primaryText,
                                       fontSize: 16.0,
-                                      fontWeight: FontWeight.w500,
+                                      letterSpacing: 0.0,
                                     ),
                                   ),
                                 ],
@@ -2183,14 +2178,12 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                                                 ),
                                               ),
                                               Text(
-                                                "Check Available Here",
-                                                style: FlutterTheme.of(context)
-                                                    .bodyMedium
-                                                    .override(
-                                                    fontFamily: 'Urbanist',
-                                                    fontSize: 14.0,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: Color(0xff7C8BA0)
+                                                FFLocalizations.of(context).getText('check_available'),
+                                                style: FlutterTheme.of(context).bodyMedium.override(
+                                                  fontFamily: 'Urbanist',
+                                                  color: FlutterTheme.of(context).primary,
+                                                  fontSize: 16.0,
+                                                  fontWeight: FontWeight.w400,
                                                 ),
                                               ),
                                             ],
@@ -2221,13 +2214,11 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                           children: [
 
                             Text(
-                              "Rental Fees",
-                              style: FlutterTheme.of(context)
-                                  .bodyMedium
-                                  .override(
+                              FFLocalizations.of(context).getText('rental_fees'),
+                              style: FlutterTheme.of(context).bodyMedium.override(
                                 fontFamily: 'Urbanist',
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.w500,
+                                fontSize: 17.0,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                             _model.radioButtonValue != 'Driver'?
@@ -2279,7 +2270,7 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                                             decoration: InputDecoration(
                                               // suffixText: 'Applied',
                                               hintText:
-                                              'Enter Coupon code',
+                                              FFLocalizations.of(context).getText('enter_coupon'),
                                               hintStyle:
                                               FlutterTheme.of(context)
                                                   .displaySmall
@@ -2404,7 +2395,7 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Text(
-                                                 "Total",
+                                                 FFLocalizations.of(context).getText('total_days'),
                                                   style: FlutterTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -2554,7 +2545,7 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Text(
-                                                 "Total",
+                                                 FFLocalizations.of(context).getText('total_days'),
                                                   style: FlutterTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -2692,19 +2683,7 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Text(
-                                                 "Total ",
-                                                  style: FlutterTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Urbanist',
-                                                    color: Color(0xff25212E),
-                                                        fontSize: 16.0,
-                                                        fontWeight: FontWeight.w400,
-                                                      ),
-                                                ),
-                                                Text(
-                                                  "Hour",
+                                                  FFLocalizations.of(context).getText('price_type_hour'),
                                                   style: FlutterTheme.of(
                                                       context)
                                                       .bodyMedium
@@ -2928,9 +2907,7 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            FFLocalizations.of(context).getText(
-                                              'coupon_amount' /* Coupon Amount */,
-                                            ),
+                                            FFLocalizations.of(context).getText('coupon_amount'),
                                             style: FlutterTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -3065,7 +3042,7 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                                         MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                         "Total Amount",
+                                         FFLocalizations.of(context).getText('total_amount'),
                                             style: FlutterTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -3914,15 +3891,17 @@ class _BookingPageWidgetState extends State<BookingPageWidget> {
                             });
                           }
                         },
-                        text: "Confirm Booking",
+                        text: FFLocalizations.of(context).getText('confirm_booking'),
                         options: FFButtonOptions(
                           height: 50.0,
                           padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                           color: FlutterTheme.of(context).btnclr,
                           textStyle: FlutterTheme.of(context).titleSmall.override(
-                            fontFamily: 'Urbanist',
+                            fontFamily: 'Readex Pro',
                             color: Colors.white,
+                            fontSize: 18.0,
+                            letterSpacing: 0.0,
                           ),
                           elevation: 4.0,
                           borderSide: BorderSide(
